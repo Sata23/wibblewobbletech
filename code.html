@@ -1,0 +1,466 @@
+<!DOCTYPE html><html class="dark" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#39FF14",
+                        "background-light": "#050505",
+                        "background-dark": "#000000",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans"]
+                    },
+                    borderRadius: {"DEFAULT": "0.1rem", "lg": "0.2rem", "xl": "0.4rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        @layer base {
+            body {
+                @apply bg-[#000000] text-slate-100 selection:bg-primary selection:text-black;
+            }
+        }
+        .glow-green {
+            text-shadow: 0 0 10px rgba(57, 255, 20, 0.5);
+        }
+        .border-glow {
+            box-shadow: 0 0 15px rgba(57, 255, 20, 0.15);
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<title>Wibblywobbly Tech | Pioneering Hyper-Tech &amp; Digital Frontiers</title>
+</head>
+<body class="font-display antialiased">
+<header class="sticky top-0 z-50 w-full border-b border-primary/20 bg-black/90 backdrop-blur-xl">
+<div class="max-w-[1280px] mx-auto px-6 h-20 flex items-center justify-between">
+<div class="flex items-center gap-12">
+<div class="flex items-center gap-3">
+<img alt="Wibblywobbly Tech Logo" class="w-auto object-contain h-12 brightness-110 contrast-125" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAUNCF1Hsm9su4-EItDk5mdTH2TlhTZJ2Ls6AlV8XxjC_74Vg83-z-Y3dOq8gxIv4XE3WRbCkX9vo4SHc0QLCDPpyoj8kRqixi6k51PaFGzkbXFGwmSdtCmpVtUptWkosHT4Fafz0QRlqUx1yF8MQ087WorAumvj9VQOpeE5bNeH39Mu5tbeyB5UHUVXNKUs8b_9Et-o20yLdG9xsgIgaMHrKiDNRVt-CViAAnUXjgDI5bcE8iLtkvZFrWpJjDcSPvzG0WBGn4NypjB" style="">
+</div>
+<nav class="hidden lg:flex items-center gap-8">
+<a class="text-xs font-bold tracking-[0.2em] uppercase hover:text-primary transition-colors" href="#" style="">Explore services</a>
+<a class="text-xs font-bold tracking-[0.2em] uppercase hover:text-primary transition-colors" href="#" style="">HOw it works</a>
+<a class="text-xs font-bold tracking-[0.2em] uppercase hover:text-primary transition-colors" href="#" style="">Pricing</a>
+<a class="text-xs font-bold tracking-[0.2em] uppercase hover:text-primary transition-colors" href="#" style="">Blogs</a><a class="text-xs font-bold tracking-[0.2em] uppercase hover:text-primary transition-colors" href="#" style=""><br></a>
+</nav>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden sm:flex relative items-center">
+<span class="material-symbols-outlined absolute left-3 text-primary text-lg" style="">terminal</span>
+<input class="bg-primary/5 border border-primary/20 rounded-none pl-10 pr-4 py-2 text-xs w-56 focus:ring-1 focus:ring-primary focus:border-primary placeholder:text-primary/30 text-primary" placeholder="Query system..." type="text">
+</div>
+<button class="bg-primary hover:bg-white text-black px-6 py-2.5 rounded-none text-xs font-black uppercase tracking-widest transition-all shadow-[0_0_15px_rgba(57,255,20,0.4)]" style="">Search</button>
+</div>
+</div>
+</header>
+<main>
+<section class="max-w-[1280px] mx-auto px-6 py-16 md:py-28">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+<div class="flex flex-col gap-8">
+<div class="inline-flex items-center gap-3 px-4 py-1.5 border border-primary/30 bg-primary/5 text-primary text-[10px] font-black uppercase tracking-[0.3em] w-fit" style="">too many problems in automating your daily workloads ?</div>
+<h1 class="text-5xl md:text-7xl font-black leading-[1.1] tracking-tighter uppercase italic" style="font-style: italic;">rest in peace<div>&nbsp;<span class="text-primary glow-green" style="">your problems</span>&nbsp;</div><div><br></div></h1>
+<p class="text-lg text-slate-400 max-w-xl leading-relaxed border-l-2 border-primary/40 pl-6" style="">
+                    Weaponizing Gen-AI architectures and neural-link interfaces to bridge the void between high-velocity code and biological optimization. Welcome to the new standard.
+                </p>
+<div class="flex flex-wrap gap-6 mt-4">
+<button class="bg-primary text-black px-10 py-5 font-black flex items-center gap-3 group uppercase tracking-widest text-sm shadow-[0_0_20px_rgba(57,255,20,0.3)]" style="">
+                        Explore Projects
+                        <span class="material-symbols-outlined transition-transform group-hover:translate-x-2" style="">keyboard_double_arrow_right</span>
+</button>
+<button class="border border-primary/30 text-primary px-10 py-5 font-black hover:bg-primary/10 transition-all uppercase tracking-widest text-sm" style="">
+                        View Matrix
+                    </button>
+</div>
+</div>
+<div class="relative h-[550px] @container">
+<div class="absolute top-0 right-0 w-4/5 aspect-video overflow-hidden border border-primary/30 shadow-2xl z-10 bg-black">
+<div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-10"></div>
+<img class="w-full h-full object-cover opacity-50 grayscale contrast-150 hover:grayscale-0 transition-all duration-700" data-alt="Futuristic automotive dashboard UI display with data" src="https://lh3.googleusercontent.com/aida-public/AB6AXuANqEGsotiZyB8Kzo7YcnPfYopsYW46-Vr8n0-uM9htmAGE41fzoLbcQfmHaJo7h7LmXOP0KaWbVbTG37jPC-qKzFap6xUgskVSjMFxFfg5ulF5i-TmYmjR4J1jrY1CqMv_Mlgt0J1v2CKc7KRxJE7by9Wyu2oPl1VaevgQaMkM7roi7078bL1FnXNDsLBO977W3pvDFg7-dFG5SbfldToK4MmtLnaWuA3l1Wt1YUYv27sfk-1XVOgwgHP3DyAn-ILkABnqYWj7G2yj" style="">
+<div class="absolute bottom-6 left-6 z-20 flex flex-col gap-2">
+<span class="text-[10px] font-black text-primary uppercase tracking-[0.2em]" style="">Neural Drive Systems</span>
+<div class="h-1 w-32 bg-primary/20 rounded-full overflow-hidden">
+<div class="h-full bg-primary w-4/5 shadow-[0_0_8px_rgba(57,255,20,0.8)]"></div>
+</div>
+</div>
+</div>
+<div class="absolute top-24 left-0 w-3/4 aspect-video overflow-hidden border border-primary/40 shadow-[0_0_30px_rgba(57,255,20,0.1)] z-20 bg-black">
+<div class="bg-zinc-900 p-3 flex items-center justify-between border-b border-primary/20">
+<div class="flex gap-2">
+<div class="w-2 h-2 rounded-full bg-primary/40"></div>
+<div class="w-2 h-2 rounded-full bg-primary/40"></div>
+<div class="w-2 h-2 rounded-full bg-primary/40"></div>
+</div>
+<span class="text-[9px] font-mono text-primary/60 tracking-widest uppercase" style="">core_processor.sh</span>
+</div>
+<img class="w-full h-full object-cover opacity-80 hue-rotate-[90deg] saturate-150" data-alt="Dark coding interface with vibrant syntax highlighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAv93OsMj88-M14p-79KAjBTfiMdMBLJowelGQdOtj1FwI1xTb9bMdcM06SQqIfRIvj_YtyaZpZaIEyJtwvIVwZvMxsTnMQ8gGt14Be-hiumJLZgolexX3Osa96Hf7vV7POyXPwK0YlzD_TcyP_haEr8YpV893Vj9SqoepkTSlG7onzL34h2JY9vkn_TcCppoVJWN_VXp0MkJ5FyGk_LbEzMIp372EQKJI_wacwWyf8fCt59GvijyYYOTQivRH-tvpFQq0lx2KvwCZj" style="">
+</div>
+<div class="absolute bottom-0 right-12 w-1/2 aspect-square overflow-hidden border-2 border-primary/50 shadow-[0_0_40px_rgba(57,255,20,0.2)] z-30 bg-black/90">
+<div class="absolute inset-0 flex flex-col items-center justify-center p-8 text-center z-10">
+<span class="material-symbols-outlined text-primary text-5xl mb-4 glow-green" style="">vital_signs</span>
+<span class="text-5xl font-black text-primary mb-1 glow-green" style="">108</span>
+<span class="text-[10px] text-primary/60 uppercase tracking-[0.4em] font-bold" style="">Biometric Optima</span>
+<div class="w-full mt-6 h-16 flex items-end gap-1.5">
+<div class="w-1.5 bg-primary/10 h-1/2"></div>
+<div class="w-1.5 bg-primary/30 h-2/3"></div>
+<div class="w-1.5 bg-primary/50 h-3/4"></div>
+<div class="w-1.5 bg-primary h-full glow-green"></div>
+<div class="w-1.5 bg-primary/60 h-4/5"></div>
+</div>
+</div>
+<img class="absolute inset-0 w-full h-full object-cover opacity-10" data-alt="Smartwatch interface displaying health metrics" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1oizyPLNwaiXKlSTX9MGHvDPJE45SMjzVF2ZKNPEydoeK9cQMxLHw_t5gwK8_erNV3qT3gD4m8agnbAz57JTMR_ORLqqgE6uc--_2kGorXu1FZcsPxrhnR_bUgr5SbIcXokZ0AwVKFmBynkPAZHWYRDMCnlFxiUWHnbE0Elpj9Gx9mYLF74bS_3b8d74CuCF85KEo2A-CiqI1R65lA8eOG4_d0S32h3IvndyanQBbYeKa-F6f-tf33DceG6To1KBtaoaTTyxffAJl" style="">
+</div>
+<div class="absolute top-1/2 right-0 w-1/3 aspect-[3/4] overflow-hidden border border-primary/20 shadow-2xl z-25 bg-primary/5 backdrop-blur-2xl">
+<div class="p-6 h-full flex flex-col justify-between items-center text-center">
+<div class="w-12 h-12 border border-primary/40 flex items-center justify-center rotate-45">
+<span class="material-symbols-outlined text-primary -rotate-45" style="">cyclone</span>
+</div>
+<div class="flex flex-col gap-1 w-full">
+<div class="h-[1px] bg-primary w-full"></div>
+<div class="h-[1px] bg-primary/40 w-4/5 mx-auto"></div>
+<div class="h-[1px] bg-primary/10 w-3/5 mx-auto"></div>
+</div>
+<span class="text-[9px] font-black uppercase tracking-[0.3em] text-primary" style="">Resonance: 432Hz</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="bg-zinc-950 py-28 border-y border-primary/10">
+<div class="max-w-[1280px] mx-auto px-6">
+<div class="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6">
+<div>
+<h2 class="text-4xl font-black mb-4 uppercase tracking-tighter glow-green" style="">Explore services</h2>
+<p class="text-slate-500 max-w-2xl font-medium" style="">explore our gamut of digital AI products</p>
+</div>
+<div class="h-px flex-grow bg-primary/10 mx-8 hidden lg:block"></div>
+<span class="text-[10px] font-mono text-primary/40 uppercase tracking-[0.5em]" style="">\</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<div class="bg-black p-10 border border-primary/10 hover:border-primary transition-all group relative overflow-hidden">
+<div class="absolute top-0 right-0 p-4 opacity-5 font-mono text-6xl font-black" style="">01</div>
+<div class="w-14 h-14 border border-primary/20 flex items-center justify-center text-primary mb-8 group-hover:bg-primary group-hover:text-black transition-all">
+<span class="material-symbols-outlined" style="">analytics</span>
+</div>
+<h3 class="text-xl font-black mb-4 uppercase tracking-tight" style="">Autonomous Marketing</h3>
+<p class="text-slate-500 mb-8 text-sm leading-relaxed" style="">Reduce your daily hussle of automating your enitre&nbsp; digital marketing campaign</p>
+<a class="text-primary text-[10px] font-black flex items-center gap-3 uppercase tracking-widest hover:gap-5 transition-all" href="#" style="">Find more<span class="material-symbols-outlined text-sm" style="">arrow_forward</span>
+</a>
+</div>
+<div class="bg-black p-10 border border-primary/10 hover:border-primary transition-all group relative overflow-hidden">
+<div class="absolute top-0 right-0 p-4 opacity-5 font-mono text-6xl font-black" style="">02</div>
+<div class="w-14 h-14 border border-primary/20 flex items-center justify-center text-primary mb-8 group-hover:bg-primary group-hover:text-black transition-all">
+<span class="material-symbols-outlined" style="">psychology</span>
+</div>
+<h3 class="text-xl font-black mb-4 uppercase tracking-tight" style="">IoT services</h3>
+<p class="text-slate-500 mb-8 text-sm leading-relaxed" style="">Get connected with multiple devices with IoT automation or sell your productd with this kind of automation</p>
+<a class="text-primary text-[10px] font-black flex items-center gap-3 uppercase tracking-widest hover:gap-5 transition-all" href="#" style="">Fin morre<span class="material-symbols-outlined text-sm" style="">arrow_forward</span>
+</a>
+</div>
+<div class="bg-black p-10 border border-primary/10 hover:border-primary transition-all group relative overflow-hidden">
+<div class="absolute top-0 right-0 p-4 opacity-5 font-mono text-6xl font-black" style="">03</div>
+<div class="w-14 h-14 border border-primary/20 flex items-center justify-center text-primary mb-8 group-hover:bg-primary group-hover:text-black transition-all">
+<span class="material-symbols-outlined" style="">settings_input_component</span>
+</div>
+<h3 class="text-xl font-black mb-4 uppercase tracking-tight" style="">ad-hoc product development</h3>
+<p class="text-slate-500 mb-8 text-sm leading-relaxed" style="">brainstorm &amp; build any autonomous product you need for you or your business</p>
+<a class="text-primary text-[10px] font-black flex items-center gap-3 uppercase tracking-widest hover:gap-5 transition-all" href="#" style="">Find moreI<span class="material-symbols-outlined text-sm" style="">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+<section class="bg-black py-32 relative overflow-hidden">
+<div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent"></div>
+<div class="max-w-[1440px] mx-auto px-6 overflow-visible">
+<div class="text-center mb-24">
+<h2 class="text-5xl font-black mb-6 uppercase tracking-tighter glow-green" style="">how it works</h2>
+<p class="text-primary/60 font-mono text-sm tracking-[0.2em]" style="">SUBSCRIPTION &amp; EXECUTION PROTOCOL v1.0</p>
+</div>
+<div class="relative mt-20">
+<div class="hidden absolute top-10 left-0 right-0 h-px bg-primary/20 z-0 hidden md:block opacity-40"></div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-7 gap-12 md:gap-8 relative z-10">
+<!-- Step 1 -->
+<div class="flex flex-col items-center text-center group">
+<div class="w-20 h-20 rounded-none bg-black border border-primary/40 flex items-center justify-center text-primary mb-8 shadow-[0_0_20px_rgba(57,255,20,0.1)] group-hover:border-primary group-hover:shadow-[0_0_30px_rgba(57,255,20,0.3)] transition-all relative">
+<span class="material-symbols-outlined text-3xl" style="">forum</span>
+<div class="absolute -top-12 left-1/2 -translate-x-1/2 whitespace-nowrap">
+<span class="bg-primary text-black text-[9px] font-black px-4 py-1 uppercase tracking-tighter" style="">PHASE 01</span>
+</div>
+<span class="material-symbols-outlined absolute -right-8 lg:-right-6 xl:-right-5 top-1/2 -translate-y-1/2 text-primary text-xl hidden md:block glow-green pointer-events-none" style="">chevron_right</span></div>
+<h3 class="text-sm font-black mb-3 px-2 uppercase tracking-wide text-primary" style="">Design Discussion &amp; PRD</h3>
+<p class="text-[11px] text-slate-500 px-2 font-medium leading-relaxed" style="">Initial deep-dive into requirements.</p>
+</div>
+<!-- Step 2 -->
+<div class="flex flex-col items-center text-center group">
+<div class="w-20 h-20 rounded-none bg-black border border-primary/40 flex items-center justify-center text-primary mb-8 shadow-[0_0_20px_rgba(57,255,20,0.1)] group-hover:border-primary group-hover:shadow-[0_0_30px_rgba(57,255,20,0.3)] transition-all relative">
+<span class="material-symbols-outlined text-3xl" style="">draw</span>
+<div class="absolute -top-12 left-1/2 -translate-x-1/2 whitespace-nowrap">
+<span class="bg-primary text-black text-[9px] font-black px-4 py-1 uppercase tracking-tighter" style="">PHASE 02</span>
+</div>
+<span class="material-symbols-outlined absolute -right-8 lg:-right-6 xl:-right-5 top-1/2 -translate-y-1/2 text-primary text-xl hidden md:block glow-green pointer-events-none" style="">chevron_right</span></div>
+<h3 class="text-sm font-black mb-3 px-2 uppercase tracking-wide text-primary" style="">Design Finalization</h3>
+<p class="text-[11px] text-slate-500 px-2 font-medium leading-relaxed" style="">Reviewing and locking in the visual concept.</p>
+</div>
+<!-- Step 3 -->
+<div class="flex flex-col items-center text-center group">
+<div class="w-20 h-20 rounded-none bg-black border border-primary/40 flex items-center justify-center text-primary mb-8 shadow-[0_0_20px_rgba(57,255,20,0.1)] group-hover:border-primary group-hover:shadow-[0_0_30px_rgba(57,255,20,0.3)] transition-all relative">
+<span class="material-symbols-outlined text-3xl" style="">verified</span>
+<div class="absolute -top-12 left-1/2 -translate-x-1/2 whitespace-nowrap">
+<span class="bg-primary text-black text-[9px] font-black px-4 py-1 uppercase tracking-tighter" style="">PHASE 03</span>
+</div>
+<span class="material-symbols-outlined absolute -right-8 lg:-right-6 xl:-right-5 top-1/2 -translate-y-1/2 text-primary text-xl hidden md:block glow-green pointer-events-none" style="">chevron_right</span></div>
+<h3 class="text-sm font-black mb-3 px-2 uppercase tracking-wide text-primary" style="">Proposal Acceptance</h3>
+<p class="text-[11px] text-slate-500 px-2 font-medium leading-relaxed" style="">Client sign-off and commitment.</p>
+</div>
+<!-- Step 4 -->
+<div class="flex flex-col items-center text-center group">
+<div class="w-20 h-20 rounded-none bg-black border border-primary/40 flex items-center justify-center text-primary mb-8 shadow-[0_0_20px_rgba(57,255,20,0.1)] group-hover:border-primary group-hover:shadow-[0_0_30px_rgba(57,255,20,0.3)] transition-all relative">
+<span class="material-symbols-outlined text-3xl" style="">payments</span>
+<div class="absolute -top-12 left-1/2 -translate-x-1/2 whitespace-nowrap">
+<span class="bg-primary text-black text-[9px] font-black px-4 py-1 uppercase tracking-tighter" style="">PHASE 04</span>
+</div>
+<span class="material-symbols-outlined absolute -right-8 lg:-right-6 xl:-right-5 top-1/2 -translate-y-1/2 text-primary text-xl hidden md:block glow-green pointer-events-none" style="">chevron_right</span></div>
+<h3 class="text-sm font-black mb-3 px-2 uppercase tracking-wide text-primary" style="">Payment</h3>
+<p class="text-[11px] text-slate-500 px-2 font-medium leading-relaxed" style="">Secure transaction through multiple gateways.</p>
+</div>
+<!-- Step 5 -->
+<div class="flex flex-col items-center text-center group">
+<div class="w-20 h-20 rounded-none bg-black border border-primary/40 flex items-center justify-center text-primary mb-8 shadow-[0_0_20px_rgba(57,255,20,0.1)] group-hover:border-primary group-hover:shadow-[0_0_30px_rgba(57,255,20,0.3)] transition-all relative">
+<span class="material-symbols-outlined text-3xl" style="">rate_review</span>
+<div class="absolute -top-12 left-1/2 -translate-x-1/2 whitespace-nowrap">
+<span class="bg-primary text-black text-[9px] font-black px-4 py-1 uppercase tracking-tighter" style="">PHASE 05</span>
+</div>
+<span class="material-symbols-outlined absolute -right-8 lg:-right-6 xl:-right-5 top-1/2 -translate-y-1/2 text-primary text-xl hidden md:block glow-green pointer-events-none" style="">chevron_right</span></div>
+<h3 class="text-sm font-black mb-3 px-2 uppercase tracking-wide text-primary" style="">Revision &amp; Review</h3>
+<p class="text-[11px] text-slate-500 px-2 font-medium leading-relaxed" style="">Collaborative feedback and refinement loop.</p>
+</div>
+<!-- Step 6 -->
+<div class="flex flex-col items-center text-center group">
+<div class="w-20 h-20 rounded-none bg-black border border-primary/40 flex items-center justify-center text-primary mb-8 shadow-[0_0_20px_rgba(57,255,20,0.1)] group-hover:border-primary group-hover:shadow-[0_0_30px_rgba(57,255,20,0.3)] transition-all relative">
+<span class="material-symbols-outlined text-3xl" style="">construction</span>
+<div class="absolute -top-12 left-1/2 -translate-x-1/2 whitespace-nowrap">
+<span class="bg-primary text-black text-[9px] font-black px-4 py-1 uppercase tracking-tighter" style="">PHASE 06</span>
+</div>
+<span class="material-symbols-outlined absolute -right-8 lg:-right-6 xl:-right-5 top-1/2 -translate-y-1/2 text-primary text-xl hidden md:block glow-green pointer-events-none" style="">chevron_right</span></div>
+<h3 class="text-sm font-black mb-3 px-2 uppercase tracking-wide text-primary" style="">Execution</h3>
+<p class="text-[11px] text-slate-500 px-2 font-medium leading-relaxed" style="">The actual build and implementation phase.</p>
+</div>
+<!-- Step 7 -->
+<div class="flex flex-col items-center text-center group">
+<div class="w-20 h-20 rounded-none bg-black border border-primary/40 flex items-center justify-center text-primary mb-8 shadow-[0_0_20px_rgba(57,255,20,0.1)] group-hover:border-primary group-hover:shadow-[0_0_30px_rgba(57,255,20,0.3)] transition-all relative">
+<span class="material-symbols-outlined text-3xl" style="">package_2</span>
+<div class="absolute -top-12 left-1/2 -translate-x-1/2 whitespace-nowrap">
+<span class="bg-primary text-black text-[9px] font-black px-4 py-1 uppercase tracking-tighter" style="">PHASE 07</span>
+</div>
+</div>
+<h3 class="text-sm font-black mb-3 px-2 uppercase tracking-wide text-primary" style="">Final Product Delivery</h3>
+<p class="text-[11px] text-slate-500 px-2 font-medium leading-relaxed" style="">Project completion and formal handover.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-28 bg-zinc-950">
+<div class="max-w-[1280px] mx-auto px-6 mb-16 flex items-end justify-between">
+<div>
+<h2 class="text-4xl font-black mb-2 uppercase tracking-tighter glow-green" style="">explore projects</h2>
+<p class="text-slate-500 font-medium" style="">Classified deep-dives into the future of human-machine interaction.</p>
+</div>
+<div class="flex gap-4">
+<button class="w-12 h-12 border border-primary/20 flex items-center justify-center hover:bg-primary hover:text-black transition-all" style="">
+<span class="material-symbols-outlined" style="">chevron_left</span>
+</button>
+<button class="w-12 h-12 border border-primary/20 flex items-center justify-center hover:bg-primary hover:text-black transition-all text-primary" style="">
+<span class="material-symbols-outlined" style="">chevron_right</span>
+</button>
+</div>
+</div>
+<div class="flex gap-8 overflow-x-auto px-6 pb-12 snap-x no-scrollbar">
+<div class="min-w-[340px] snap-start group cursor-pointer">
+<div class="relative aspect-[3/4] overflow-hidden mb-6 border border-primary/10">
+<img alt="type explore" class="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0 brightness-75 group-hover:brightness-100" data-alt="Dynamic data visualization graphics on screen" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBC_tXp-j_I_V_5W9L-n-6_h-N-P-p-Z-m-r-s-t-u-v-w-x-y-z" style="">
+<div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+<div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<div class="w-20 h-20 bg-primary/90 flex items-center justify-center shadow-[0_0_30px_rgba(57,255,20,0.6)]">
+<span class="material-symbols-outlined text-black text-4xl" style="">play_circle</span>
+</div>
+</div>
+<div class="absolute bottom-8 left-8 right-8">
+<span class="text-[10px] font-black text-primary mb-3 block uppercase tracking-[0.3em]" style="">AI // NEURAL</span>
+<h3 class="text-white text-2xl font-black leading-tight uppercase" style="">autonomus digital marketing solution</h3>
+</div>
+</div>
+</div>
+<div class="min-w-[340px] snap-start group cursor-pointer">
+<div class="relative aspect-[3/4] overflow-hidden mb-6 border border-primary/10">
+<img class="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0 brightness-75 group-hover:brightness-100" data-alt="Friendly health assistant chatbot interface hovering over a mobile phone screen in high-tech dark theme" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCpYjD-VlW03FhYxO3_eXz7J0u9qF4wS8Q9e8r7f6_g5h4i3j2k1l0m9n8o7p6q5r4s3t2u1v0w" style="">
+<div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+<div class="absolute bottom-8 left-8 right-8">
+<span class="text-[10px] font-black text-primary mb-3 block uppercase tracking-[0.3em]" style="">DRIVE // UI</span>
+<h3 class="text-white text-2xl font-black leading-tight uppercase" style="">SOS ASSISTANT FOR ELDERLY</h3>
+</div>
+</div>
+</div>
+<div class="min-w-[340px] snap-start group cursor-pointer">
+<div class="relative aspect-[3/4] overflow-hidden mb-6 border border-primary/10">
+<img class="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0 brightness-75 group-hover:brightness-100" data-alt="Modern medical laboratory equipment with blue lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBOOTN8KSVk5SQ39xzuv5xfly1P2A-h4Sicv8LUrCAhhZI0n5nF09qNeratJKLgGPgXsMWrup1EjbFcwTlUPpsh4lRdCDbP9Ljh2_sXkY0-cMzyEh5v5NulB9NTnLjhctvcjE8Ogz5GnC5_yllXhBdcxatAWuqpuP09csXlczPv-E7UekrSKyCt1KWE04qLMTuMhNvYxtb13A6o-fKLotjh2fp3_CS-ZIX8VeDY21MwWA92rY2dul7Z2eAo9Ce93Md52CCrVGUrgp7S" style="">
+<div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+<div class="absolute bottom-8 left-8 right-8">
+<span class="text-[10px] font-black text-primary mb-3 block uppercase tracking-[0.3em]" style="">BIO // INTEGRITY</span>
+<h3 class="text-white text-2xl font-black leading-tight uppercase" style="">sos assistant for elderly people</h3>
+</div>
+</div>
+</div>
+<div class="min-w-[340px] snap-start group cursor-pointer">
+<div class="relative aspect-[3/4] overflow-hidden mb-6 border border-primary/10">
+<img class="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0 brightness-75 group-hover:brightness-100" data-alt="Soft abstract blue and violet light waves" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVBc1e-pdZUyc5ECPAGYqYJWzhzHX7uf0bIiggDSO4JTcgl5CsFbqzeymUtjBnRNuyqvBZcQBYKq_WaRlbQ6MWaD4csETfBJSFAWhVxf4taSN1YWHp1eKYNchqbU-zRxcq7F8Vfk1FXsM-gxdzF-M9fu40iizYduFJkkrSDKcgmLEZDwaB1x2vRW6p8rkQzXtagZNCqTriP484cAi_LavM6TK89eOnMtflKc03H7sB0NP4dydZpQnnrC2qrn4VXVVfNakiLKSh6p9L" style="">
+<div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+<div class="absolute bottom-8 left-8 right-8">
+<span class="text-[10px] font-black text-primary mb-3 block uppercase tracking-[0.3em]" style="">VOID // WELLNESS</span>
+<h3 class="text-white text-2xl font-black leading-tight uppercase" style="">auto stock market scheduler</h3>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-28 bg-black">
+<div class="max-w-[1280px] mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-24">
+<div>
+<h2 class="text-4xl font-black mb-12 uppercase tracking-tighter glow-green" style="">Latest&nbsp; blogs from the industry</h2>
+<div class="space-y-10">
+<article class="flex gap-8 group cursor-pointer">
+<div class="w-28 h-28 overflow-hidden shrink-0 border border-primary/20">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform grayscale group-hover:grayscale-0 contrast-125" data-alt="Cybersecurity digital visualization" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgWi4OOROJcuW3_sJFMeIFjHqjvOM__-5jFdQyQTahHRKmGs1L-OHKTKwq8ncs0kRY_eksgkKusElypXq6L9DCllMiBbldn9LRaqRljZ2a1hEUu5-7RI2CxLPqL1v5UIbltf_rOViT_0o1w-vlZyyrAB3wMqPIGm9ZR38EsvtRy8mspC0vPRnlottKPowhVnReju-XZBJSoi5vDIeEPYycGpwSvAjUO-Pf9qNjiGXcywHa2cV9mQoAa-0a1oREn7-oo4OEXXT_VYjB" style="">
+</div>
+<div class="flex flex-col justify-center">
+<span class="text-[9px] font-black text-primary uppercase mb-2 tracking-[0.2em]" style="">Sec-Ops</span>
+<h4 class="text-xl font-black uppercase group-hover:text-primary transition-colors leading-tight" style="">Hardening Bio-Data Chains</h4>
+<p class="text-sm text-slate-500 mt-2 line-clamp-1 font-medium" style="">Securing decentralized patient nodes in the urban sprawl.</p>
+</div>
+</article>
+<article class="flex gap-8 group cursor-pointer">
+<div class="w-28 h-28 overflow-hidden shrink-0 border border-primary/20">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform grayscale group-hover:grayscale-0 contrast-125" data-alt="React and coding abstract background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZv3A1fywdlbtQmjvXpV6mLiUtOodAjEuwfyiamb-hBdAXHvt8cK8wJ3s1xvzkaPcB0BgpR5tstLrMx5fvPuM8VmbvySfxvkUWGDNojENilEcBgU06u047Sc-8W7oRx-sktoYUDVWLzH6Sux6uNzxExlp9n3HGNGQTNyLSd_S-iSrnhUV-QHUWphKSnQJJhaT6GBH1NOja8r5EbJ1A2oCdita8olqnbG_hPcMUtHaOWnSIATk5BJZt3EIIuT9HWQw46jYOeY2tDQWW" style="">
+</div>
+<div class="flex flex-col justify-center">
+<span class="text-[9px] font-black text-primary uppercase mb-2 tracking-[0.2em]" style="">Dev-Protocol</span>
+<h4 class="text-xl font-black uppercase group-hover:text-primary transition-colors leading-tight" style="">Low-Latency Nerve UI</h4>
+<p class="text-sm text-slate-500 mt-2 line-clamp-1 font-medium" style="">Optimizing synaptic response times for dash interfaces.</p>
+</div>
+</article>
+<article class="flex gap-8 group cursor-pointer">
+<div class="w-28 h-28 overflow-hidden shrink-0 border border-primary/20">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform grayscale group-hover:grayscale-0 contrast-125" data-alt="Minimalist yoga or meditation setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOR0VLcryxmFt0ugJjTHKN6jHoSoNcP-FR8r5wC8ikYa60yCEGt7BNs7eRt17tyaEW6gE9ihPfJ4ofGqc5RlDc0Fnppc8uSFzktdycUzU6aWH6TD7ESy2vv1_C6qPmw8U0ZEs7XPO7mfohfA1kkFv2sp3nbWBieCsYWfDWMFj5vCg_lrKiJTiCT3jFt-GbhUwtlVtTamnF3K0kghO11KN7nfTwF9LihMDV3KdCZutUyG3POR9Z6udEfpN843zxB0hso7_5PS8ak-o9" style="">
+</div>
+<div class="flex flex-col justify-center">
+<span class="text-[9px] font-black text-primary uppercase mb-2 tracking-[0.2em]" style="">Static // Chill</span>
+<h4 class="text-xl font-black uppercase group-hover:text-primary transition-colors leading-tight" style="">System Purge: Digital Detox</h4>
+<p class="text-sm text-slate-500 mt-2 line-clamp-1 font-medium" style="">Equilibrium protocols for high-bandwidth engineers.</p>
+</div>
+</article>
+</div>
+</div>
+<div class="bg-primary/[0.03] border border-primary/10 p-12 flex flex-col gap-10">
+<h2 class="text-4xl font-black uppercase tracking-tighter" style="">Stay Wired</h2>
+<p class="text-slate-500 font-medium leading-relaxed" style="">Direct telemetry feeds into our daily innovation stream. Synchronize your neural network with ours.</p>
+<div class="space-y-6">
+<a class="flex items-center justify-between p-6 bg-black border border-primary/20 hover:border-primary transition-all group" href="#" style="">
+<div class="flex items-center gap-6">
+<div class="w-12 h-12 bg-primary/10 text-primary border border-primary/20 flex items-center justify-center group-hover:bg-primary group-hover:text-black transition-all">
+<svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path></svg>
+</div>
+<span class="font-black uppercase tracking-widest" style="">Neural Link Feed</span>
+</div>
+<span class="material-symbols-outlined text-primary group-hover:translate-x-2 transition-transform" style="">arrow_forward</span>
+</a>
+<a class="flex items-center justify-between p-6 bg-black border border-primary/20 hover:border-primary transition-all group" href="#" style="">
+<div class="flex items-center gap-6">
+<div class="w-12 h-12 bg-primary/10 text-primary border border-primary/20 flex items-center justify-center group-hover:bg-primary group-hover:text-black transition-all">
+<svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path></svg>
+</div>
+<span class="font-black uppercase tracking-widest" style="">Digital Imagery</span>
+</div>
+<span class="material-symbols-outlined text-primary group-hover:translate-x-2 transition-transform" style="">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer class="bg-black text-white pt-28 pb-12 border-t border-primary/20 relative">
+<div class="absolute top-0 right-0 p-12 opacity-5 pointer-events-none">
+<span class="text-9xl font-black uppercase italic select-none" style="">NOIR</span>
+</div>
+<div class="max-w-[1280px] mx-auto px-6">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-16 mb-24 relative z-10">
+<div class="flex flex-col gap-8">
+<div class="flex items-center gap-3">
+<img alt="Wibblywobbly Tech Logo" class="w-auto object-contain h-12 brightness-110 grayscale" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUG8WUYB-fXmhoFP1l3vRJujx73DmPN5Mu6Cr3326SfvWkqREjoXVPRYyvHnMgiMw1ueaK0GbUQpNPvM9U3siy_rdnCxXINKSfWlrv8ro3hjl8UbFUx6j-gIyREU2mJA9XudmhY5g9LKPD61zwx3fmp_jlCbGKV7wOCxIAE9a6Xeeaj5myoGvYojudCEbc_IThT4Vz3IwUUNUoXwLg0AnnjYHlvQrnXUAD7nVjTepHP_HLx8ZATLR7xg2_lTHCBo5zOOfo35N00CrB" style="">
+</div>
+<p class="text-slate-500 text-sm font-medium leading-relaxed" style="">
+                    Weaponizing professional tech production and human well-being through integrated digital solutions for the 20XX era.
+                </p>
+<div class="flex gap-6">
+<a class="text-slate-400 hover:text-primary transition-colors" href="#" style="">
+<span class="material-symbols-outlined text-2xl" style="">public</span>
+</a>
+<a class="text-slate-400 hover:text-primary transition-colors" href="#" style="">
+<span class="material-symbols-outlined text-2xl" style="">hub</span>
+</a>
+<a class="text-slate-400 hover:text-primary transition-colors" href="#" style="">
+<span class="material-symbols-outlined text-2xl" style="">videocam</span>
+</a>
+</div>
+</div>
+<div>
+<h4 class="text-[10px] font-black uppercase tracking-[0.4em] mb-10 text-primary" style="">stay cinnected</h4>
+<ul class="space-y-5 text-slate-400 text-sm font-bold uppercase tracking-widest">
+<li class="" style="">likedin</li>
+<li class="" style="">instagram</li>
+<li class="" style=""><a class="hover:text-primary transition-colors" href="#" style="">Roadmap</a></li>
+<li class="" style=""><br></li>
+</ul>
+</div>
+<div>
+<h4 class="text-[10px] font-black uppercase tracking-[0.4em] mb-10 text-primary" style="">explore services</h4>
+<ul class="space-y-5 text-slate-400 text-sm font-bold uppercase tracking-widest">
+<li class="" style="">autonomous digital marketing</li>
+<li class="" style="">iot automation</li>
+<li class="" style="">ad-hoc product development</li>
+<li class="" style=""><br></li>
+</ul>
+</div>
+<div>
+<h4 class="text-[10px] font-black uppercase tracking-[0.4em] mb-10 text-primary" style="">explore projects</h4>
+<ul class="space-y-5 text-slate-400 text-sm font-bold uppercase tracking-widest">
+<li class="" style="">marketing automation</li>
+<li class="" style="">health tracker</li>
+<li class="" style="">personal health tracker</li>
+<li class="" style="">sos health assistant</li>
+</ul>
+</div>
+</div>
+<div class="flex flex-col md:flex-row justify-between items-center pt-10 border-t border-primary/10 text-slate-600 text-[10px] font-black uppercase tracking-[0.2em]">
+<p class="" style="">© 2024 Wibblywobbly Tech // Established in the Void.</p>
+<div class="flex gap-10 mt-6 md:mt-0">
+<a class="hover:text-white transition-colors" href="#" style="">Node Config</a>
+<a class="hover:text-white transition-colors" href="#" style="">GDPR Protocol</a>
+</div>
+</div>
+</div>
+</footer>
+</body></html>

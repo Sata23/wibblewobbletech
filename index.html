@@ -1,1377 +1,832 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AI Architect Jobs — Market Intelligence</title>
-  <style>
-    /* ─── Reset & Base ──────────────────────────────────────────────── */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="WobblyWibbly Tech - AI & Cricket Analytics">
+    <meta property="og:description" content="Dynamic AI & Cricket Analytics Platform">
+    <meta property="og:image" content="https://via.placeholder.com/1200x630?text=WobblyWibbly+Tech">
+    <title>WobblyWibbly Tech - AI & Cricket Analytics</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    :root {
-      --bg-0:        #050508;
-      --bg-1:        #0b0b14;
-      --bg-2:        #10101e;
-      --glass:       rgba(255,255,255,0.035);
-      --glass-hover: rgba(255,255,255,0.06);
-      --border:      rgba(139,92,246,0.22);
-      --border-bright: rgba(167,139,250,0.45);
-      --p1:          #7c3aed;
-      --p2:          #a855f7;
-      --p3:          #c084fc;
-      --p4:          #e9d5ff;
-      --accent:      #d946ef;
-      --green:       #4ade80;
-      --yellow:      #fbbf24;
-      --red:         #f87171;
-      --text-1:      #f3f0ff;
-      --text-2:      #c4b5fd;
-      --text-3:      #8b8aaa;
-      --radius:      14px;
-      --radius-lg:   20px;
-    }
+        body {
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0a0e1a;
+            color: #e0e0e0;
+            overflow-x: hidden;
+        }
 
-    html { scroll-behavior: smooth; }
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 14, 39, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0, 255, 136, 0.1);
+        }
 
-    body {
-      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-      background: var(--bg-0);
-      color: var(--text-1);
-      min-height: 100vh;
-      overflow-x: hidden;
-    }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #00ff88 0%, #00d4ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
 
-    /* ─── Ambient Background ───────────────────────────────────────── */
-    .bg-orb {
-      position: fixed;
-      border-radius: 50%;
-      filter: blur(120px);
-      pointer-events: none;
-      z-index: 0;
-    }
-    .bg-orb-1 {
-      width: 600px; height: 600px;
-      background: radial-gradient(circle, rgba(124,58,237,0.18) 0%, transparent 70%);
-      top: -200px; left: -200px;
-      animation: float1 12s ease-in-out infinite;
-    }
-    .bg-orb-2 {
-      width: 500px; height: 500px;
-      background: radial-gradient(circle, rgba(217,70,239,0.12) 0%, transparent 70%);
-      bottom: -150px; right: -150px;
-      animation: float2 15s ease-in-out infinite;
-    }
-    .bg-orb-3 {
-      width: 350px; height: 350px;
-      background: radial-gradient(circle, rgba(168,85,247,0.10) 0%, transparent 70%);
-      top: 40%; left: 50%;
-      transform: translate(-50%, -50%);
-      animation: float3 18s ease-in-out infinite;
-    }
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
 
-    @keyframes float1 {
-      0%,100% { transform: translate(0,0); }
-      50%      { transform: translate(40px, 30px); }
-    }
-    @keyframes float2 {
-      0%,100% { transform: translate(0,0); }
-      50%      { transform: translate(-30px,-40px); }
-    }
-    @keyframes float3 {
-      0%,100% { transform: translate(-50%,-50%); }
-      50%      { transform: translate(-46%,-54%); }
-    }
+        nav a {
+            color: #e0e0e0;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
 
-    /* ─── Layout ───────────────────────────────────────────────────── */
-    .wrapper {
-      position: relative;
-      z-index: 1;
-      max-width: 1320px;
-      margin: 0 auto;
-      padding: 24px 20px 60px;
-    }
+        nav a:hover {
+            color: #00ff88;
+        }
 
-    /* ─── Glass utility ────────────────────────────────────────────── */
-    .glass {
-      background: var(--glass);
-      border: 1px solid var(--border);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border-radius: var(--radius);
-    }
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 60px;
+            position: relative;
+            overflow: hidden;
+        }
 
-    /* ─── Header ───────────────────────────────────────────────────── */
-    header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 16px;
-      margin-bottom: 28px;
-    }
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(0, 255, 136, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            top: -100px;
+            left: -100px;
+            animation: float 6s ease-in-out infinite;
+        }
 
-    .logo-area {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(0, 212, 255, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            bottom: -100px;
+            right: -100px;
+            animation: float 8s ease-in-out infinite reverse;
+        }
 
-    .logo-icon {
-      width: 42px; height: 42px;
-      background: linear-gradient(135deg, var(--p1), var(--accent));
-      border-radius: 10px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 20px;
-      box-shadow: 0 0 20px rgba(124,58,237,0.5);
-    }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(30px); }
+        }
 
-    .logo-text h1 {
-      font-size: 1.25rem;
-      font-weight: 700;
-      background: linear-gradient(90deg, var(--p3), var(--accent));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      line-height: 1.2;
-    }
-    .logo-text p {
-      font-size: 0.72rem;
-      color: var(--text-3);
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-    }
+        .hero-content {
+            text-align: center;
+            z-index: 10;
+            max-width: 1000px;
+            padding: 2rem;
+        }
 
-    .header-right {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
 
-    .live-badge {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      padding: 5px 12px;
-      border-radius: 20px;
-      border: 1px solid rgba(74,222,128,0.3);
-      background: rgba(74,222,128,0.07);
-      font-size: 0.72rem;
-      color: var(--green);
-      font-weight: 500;
-    }
-    .live-dot {
-      width: 7px; height: 7px;
-      background: var(--green);
-      border-radius: 50%;
-      animation: pulse-green 2s ease-in-out infinite;
-    }
-    @keyframes pulse-green {
-      0%,100% { opacity: 1; transform: scale(1); }
-      50%      { opacity: 0.5; transform: scale(1.4); }
-    }
+        .hero h1 span {
+            background: linear-gradient(135deg, #00ff88 0%, #00d4ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
 
-    .last-updated {
-      font-size: 0.72rem;
-      color: var(--text-3);
-    }
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            color: #b0b0b0;
+        }
 
-    /* ─── Stats Bar ─────────────────────────────────────────────────── */
-    .stats-bar {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      gap: 12px;
-      margin-bottom: 24px;
-    }
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
 
-    .stat-card {
-      padding: 16px 18px;
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-      transition: border-color 0.2s;
-    }
-    .stat-card:hover { border-color: var(--border-bright); }
+        .btn {
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
 
-    .stat-label {
-      font-size: 0.68rem;
-      color: var(--text-3);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-    }
-    .stat-value {
-      font-size: 1.6rem;
-      font-weight: 700;
-      background: linear-gradient(135deg, var(--p3), var(--accent));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      line-height: 1;
-    }
-    .stat-sub {
-      font-size: 0.69rem;
-      color: var(--text-2);
-    }
+        .btn-primary {
+            background: linear-gradient(135deg, #00ff88 0%, #00d4ff 100%);
+            color: #0a0e27;
+            font-weight: bold;
+        }
 
-    /* ─── Command Bar ───────────────────────────────────────────────── */
-    .command-section {
-      margin-bottom: 22px;
-    }
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 255, 136, 0.3);
+        }
 
-    .command-label {
-      font-size: 0.72rem;
-      color: var(--text-3);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-bottom: 8px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .command-label::before {
-      content: '';
-      display: inline-block;
-      width: 6px; height: 6px;
-      border-radius: 50%;
-      background: var(--accent);
-    }
+        .btn-secondary {
+            border: 2px solid #00ff88;
+            color: #00ff88;
+            background: transparent;
+        }
 
-    .command-wrap {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 12px 16px;
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      background: rgba(0,0,0,0.4);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      transition: border-color 0.2s, box-shadow 0.2s;
-    }
-    .command-wrap:focus-within {
-      border-color: var(--p2);
-      box-shadow: 0 0 0 3px rgba(124,58,237,0.15), 0 0 20px rgba(124,58,237,0.1);
-    }
+        .btn-secondary:hover {
+            background: rgba(0, 255, 136, 0.1);
+        }
 
-    .command-prompt-icon {
-      color: var(--p2);
-      font-family: monospace;
-      font-size: 1rem;
-      font-weight: 700;
-      user-select: none;
-      flex-shrink: 0;
-    }
+        /* Services Section */
+        .services {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
 
-    .command-input {
-      flex: 1;
-      background: transparent;
-      border: none;
-      outline: none;
-      color: var(--text-1);
-      font-size: 0.9rem;
-      font-family: 'Courier New', monospace;
-      caret-color: var(--p2);
-    }
-    .command-input::placeholder { color: var(--text-3); }
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
 
-    .command-hint {
-      font-size: 0.68rem;
-      color: var(--text-3);
-      font-family: monospace;
-      white-space: nowrap;
-    }
+        .section-title span {
+            background: linear-gradient(135deg, #00ff88 0%, #00d4ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
 
-    .btn-run {
-      padding: 7px 18px;
-      border-radius: 8px;
-      border: 1px solid var(--p1);
-      background: linear-gradient(135deg, var(--p1), var(--p2));
-      color: white;
-      font-size: 0.8rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: opacity 0.2s, box-shadow 0.2s;
-      white-space: nowrap;
-    }
-    .btn-run:hover {
-      opacity: 0.9;
-      box-shadow: 0 0 16px rgba(124,58,237,0.4);
-    }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
 
-    /* ─── Suggestion chips ──────────────────────────────────────────── */
-    .suggestions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-top: 8px;
-    }
-    .chip {
-      padding: 4px 12px;
-      border-radius: 20px;
-      border: 1px solid var(--border);
-      background: var(--glass);
-      color: var(--text-2);
-      font-size: 0.72rem;
-      cursor: pointer;
-      transition: border-color 0.2s, background 0.2s;
-    }
-    .chip:hover {
-      border-color: var(--p2);
-      background: rgba(124,58,237,0.12);
-      color: var(--p3);
-    }
+        .service-card {
+            background: rgba(20, 25, 50, 0.8);
+            border: 1px solid rgba(0, 255, 136, 0.2);
+            padding: 2rem;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
 
-    /* ─── Filters ───────────────────────────────────────────────────── */
-    .filters-row {
-      display: flex;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 18px;
-    }
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: #00ff88;
+            box-shadow: 0 20px 40px rgba(0, 255, 136, 0.1);
+        }
 
-    .filter-label {
-      font-size: 0.72rem;
-      color: var(--text-3);
-      margin-right: 4px;
-    }
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
 
-    .filter-btn {
-      padding: 5px 14px;
-      border-radius: 20px;
-      border: 1px solid var(--border);
-      background: var(--glass);
-      color: var(--text-2);
-      font-size: 0.75rem;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-    .filter-btn:hover,
-    .filter-btn.active {
-      border-color: var(--p2);
-      background: rgba(124,58,237,0.15);
-      color: var(--p3);
-    }
+        .service-card h3 {
+            margin-bottom: 1rem;
+            color: #00ff88;
+        }
 
-    .spacer { flex: 1; }
+        .service-card p {
+            color: #b0b0b0;
+            line-height: 1.6;
+        }
 
-    .btn-refresh {
-      padding: 6px 16px;
-      border-radius: 8px;
-      border: 1px solid rgba(74,222,128,0.35);
-      background: rgba(74,222,128,0.07);
-      color: #86efac;
-      font-size: 0.75rem;
-      font-weight: 600;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      transition: all 0.2s;
-    }
-    .btn-refresh:hover:not(:disabled) {
-      border-color: rgba(74,222,128,0.7);
-      background: rgba(74,222,128,0.15);
-      color: #4ade80;
-    }
-    .btn-refresh:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-    }
-    .btn-refresh .spin { display: inline-block; }
-    .btn-refresh.loading .spin { animation: spin 1s linear infinite; }
-    @keyframes spin { to { transform: rotate(360deg); } }
+        /* Analytics Dashboard */
+        .dashboard {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(20, 25, 50, 0.5);
+            border-radius: 10px;
+            margin: 3rem auto;
+        }
 
-    .btn-export {
-      padding: 6px 16px;
-      border-radius: 8px;
-      border: 1px solid var(--border);
-      background: var(--glass);
-      color: var(--text-2);
-      font-size: 0.75rem;
-      font-weight: 600;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      transition: all 0.2s;
-    }
-    .btn-export:hover {
-      border-color: var(--p2);
-      background: rgba(124,58,237,0.12);
-      color: var(--p3);
-    }
+        .dashboard h2 {
+            margin-bottom: 2rem;
+            font-size: 2rem;
+        }
 
-    .sort-select {
-      padding: 5px 10px;
-      border-radius: 8px;
-      border: 1px solid var(--border);
-      background: var(--bg-2);
-      color: var(--text-2);
-      font-size: 0.75rem;
-      cursor: pointer;
-      outline: none;
-    }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
 
-    /* ─── Jobs Grid ─────────────────────────────────────────────────── */
-    .jobs-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
-      gap: 16px;
-    }
+        .stat-box {
+            background: rgba(0, 255, 136, 0.05);
+            border: 1px solid rgba(0, 255, 136, 0.2);
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+        }
 
-    /* ─── Job Card ──────────────────────────────────────────────────── */
-    .job-card {
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-      transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
-      cursor: default;
-      position: relative;
-      overflow: hidden;
-    }
-    .job-card::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(124,58,237,0.06) 0%, transparent 60%);
-      opacity: 0;
-      transition: opacity 0.3s;
-      pointer-events: none;
-    }
-    .job-card:hover {
-      border-color: var(--border-bright);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 32px rgba(124,58,237,0.15);
-    }
-    .job-card:hover::before { opacity: 1; }
+        .stat-number {
+            font-size: 2.5rem;
+            color: #00ff88;
+            font-weight: bold;
+        }
 
-    /* Match score ribbon */
-    .score-ribbon {
-      position: absolute;
-      top: 0; right: 0;
-      padding: 4px 12px;
-      border-bottom-left-radius: 10px;
-      font-size: 0.68rem;
-      font-weight: 700;
-      letter-spacing: 0.04em;
-    }
-    .score-high   { background: rgba(74,222,128,0.15); color: var(--green); border: 1px solid rgba(74,222,128,0.2); border-top: none; border-right: none; }
-    .score-mid    { background: rgba(251,191,36,0.12); color: var(--yellow); border: 1px solid rgba(251,191,36,0.2); border-top: none; border-right: none; }
-    .score-low    { background: rgba(248,113,113,0.12); color: var(--red); border: 1px solid rgba(248,113,113,0.2); border-top: none; border-right: none; }
+        .stat-label {
+            color: #b0b0b0;
+            margin-top: 0.5rem;
+        }
 
-    /* Card header */
-    .card-header {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      padding-right: 60px;
-    }
+        /* Interactive Chart */
+        .chart-container {
+            background: rgba(10, 14, 39, 0.8);
+            border: 1px solid rgba(0, 255, 136, 0.2);
+            padding: 2rem;
+            border-radius: 10px;
+            margin-top: 2rem;
+        }
 
-    .company-logo {
-      width: 40px; height: 40px;
-      border-radius: 10px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.1rem;
-      font-weight: 700;
-      flex-shrink: 0;
-      border: 1px solid var(--border);
-    }
+        .chart-title {
+            margin-bottom: 1.5rem;
+            color: #00ff88;
+            font-weight: bold;
+        }
 
-    .card-title-area h3 {
-      font-size: 0.95rem;
-      font-weight: 600;
-      color: var(--text-1);
-      line-height: 1.3;
-      margin-bottom: 3px;
-    }
-    .card-company {
-      font-size: 0.8rem;
-      color: var(--text-2);
-    }
+        .bar {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
 
-    /* Meta row */
-    .card-meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-    }
+        .bar-label {
+            width: 100px;
+            color: #b0b0b0;
+        }
 
-    .meta-tag {
-      display: flex;
-      align-items: center;
-      gap: 4px;
-      padding: 3px 10px;
-      border-radius: 20px;
-      font-size: 0.7rem;
-      border: 1px solid var(--border);
-      background: var(--glass);
-      color: var(--text-2);
-    }
-    .meta-tag.salary  { border-color: rgba(74,222,128,0.3); color: var(--green); background: rgba(74,222,128,0.07); }
-    .meta-tag.date    { border-color: rgba(251,191,36,0.3); color: var(--yellow); background: rgba(251,191,36,0.07); }
-    .meta-tag.hybrid  { border-color: rgba(168,85,247,0.35); color: var(--p3); background: rgba(168,85,247,0.08); }
-    .meta-tag.platform{ border-color: rgba(192,132,252,0.25); color: var(--p3); background: rgba(192,132,252,0.07); }
+        .bar-container {
+            flex: 1;
+            height: 30px;
+            background: rgba(0, 255, 136, 0.1);
+            border-radius: 5px;
+            overflow: hidden;
+            margin: 0 1rem;
+        }
 
-    /* Skills */
-    .skills-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 5px;
-    }
-    .skill-tag {
-      padding: 2px 9px;
-      border-radius: 4px;
-      font-size: 0.67rem;
-      background: rgba(124,58,237,0.12);
-      border: 1px solid rgba(124,58,237,0.2);
-      color: var(--p3);
-    }
-    .skill-tag.overflow {
-      background: rgba(255,255,255,0.04);
-      border-color: var(--border);
-      color: var(--text-3);
-    }
+        .bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #00ff88 0%, #00d4ff 100%);
+            border-radius: 5px;
+            transition: width 2s ease-out;
+        }
 
-    /* Description */
-    .card-desc {
-      font-size: 0.77rem;
-      color: var(--text-3);
-      line-height: 1.5;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-    }
+        .bar-value {
+            width: 50px;
+            text-align: right;
+            color: #00ff88;
+            font-weight: bold;
+        }
 
-    /* ─── Resume mode badge ──────────────────────────────────────────── */
-    .resume-mode-banner {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 10px 16px;
-      border-radius: var(--radius);
-      background: rgba(74,222,128,0.07);
-      border: 1px solid rgba(74,222,128,0.25);
-      margin-bottom: 18px;
-      font-size: 0.78rem;
-      color: var(--green);
-      flex-wrap: wrap;
-    }
-    .resume-mode-banner strong { color: #fff; }
-    .resume-mode-banner .overall-score {
-      margin-left: auto;
-      font-weight: 700;
-      font-size: 0.85rem;
-      background: linear-gradient(90deg, var(--green), var(--p3));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
+        /* Projects Section - NOIR Style */
+        .projects {
+            padding: 5rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
 
-    /* ─── Gaps & Strengths ──────────────────────────────────────────── */
-    .gaps-section {
-      border-top: 1px solid rgba(255,255,255,0.05);
-      padding-top: 10px;
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-    }
-    .gaps-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 4px;
-      align-items: flex-start;
-    }
-    .gaps-label {
-      font-size: 0.63rem;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      min-width: 58px;
-      flex-shrink: 0;
-      padding-top: 3px;
-    }
-    .gaps-label.gap      { color: var(--red); }
-    .gaps-label.strength { color: var(--green); }
-    .gap-tag {
-      padding: 2px 7px;
-      border-radius: 4px;
-      font-size: 0.63rem;
-    }
-    .gap-tag.missing {
-      background: rgba(248,113,113,0.10);
-      border: 1px solid rgba(248,113,113,0.22);
-      color: #fca5a5;
-    }
-    .gap-tag.present {
-      background: rgba(74,222,128,0.08);
-      border: 1px solid rgba(74,222,128,0.20);
-      color: #86efac;
-    }
-    .delta-badge {
-      font-size: 0.65rem;
-      color: var(--text-3);
-      margin-left: auto;
-      white-space: nowrap;
-      align-self: flex-end;
-    }
-    .delta-badge span { color: var(--red); }
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
 
-    /* Card footer */
-    .card-footer {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 8px;
-      margin-top: auto;
-    }
+        .project-card {
+            background: linear-gradient(135deg, rgba(15, 20, 40, 0.9) 0%, rgba(20, 25, 50, 0.9) 100%);
+            border: 1px solid rgba(0, 255, 136, 0.15);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            group: 1;
+        }
 
-    .match-bar-wrap {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      flex: 1;
-    }
-    .match-bar-label {
-      font-size: 0.67rem;
-      color: var(--text-3);
-      white-space: nowrap;
-    }
-    .match-bar-track {
-      flex: 1;
-      height: 4px;
-      border-radius: 4px;
-      background: rgba(255,255,255,0.07);
-      overflow: hidden;
-    }
-    .match-bar-fill {
-      height: 100%;
-      border-radius: 4px;
-      background: linear-gradient(90deg, var(--p1), var(--accent));
-      transition: width 0.6s ease;
-    }
-    .match-pct {
-      font-size: 0.72rem;
-      font-weight: 600;
-      color: var(--p3);
-      min-width: 32px;
-      text-align: right;
-    }
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 136, 0.1), transparent);
+            transition: left 0.5s ease;
+            z-index: 1;
+        }
 
-    .btn-apply {
-      padding: 7px 18px;
-      border-radius: 8px;
-      border: 1px solid rgba(124,58,237,0.5);
-      background: linear-gradient(135deg, rgba(124,58,237,0.2), rgba(168,85,247,0.15));
-      color: var(--p3);
-      font-size: 0.75rem;
-      font-weight: 600;
-      cursor: pointer;
-      text-decoration: none;
-      transition: all 0.2s;
-      white-space: nowrap;
-    }
-    .btn-apply:hover {
-      background: linear-gradient(135deg, var(--p1), var(--p2));
-      color: white;
-      border-color: transparent;
-      box-shadow: 0 0 14px rgba(124,58,237,0.4);
-    }
+        .project-card:hover::before {
+            left: 100%;
+        }
 
-    /* ─── Empty State ───────────────────────────────────────────────── */
-    .empty-state {
-      grid-column: 1 / -1;
-      text-align: center;
-      padding: 60px 20px;
-      color: var(--text-3);
-    }
-    .empty-state .emoji { font-size: 2.5rem; margin-bottom: 12px; }
-    .empty-state p { font-size: 0.85rem; }
+        .project-card:hover {
+            transform: translateY(-15px);
+            border-color: #00ff88;
+            box-shadow: 0 25px 60px rgba(0, 255, 136, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
 
-    /* ─── Console Output ─────────────────────────────────────────────── */
-    .console-section {
-      margin-top: 24px;
-    }
-    .console-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 8px;
-    }
-    .console-title {
-      font-size: 0.72rem;
-      color: var(--text-3);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-    }
-    .btn-clear-console {
-      font-size: 0.68rem;
-      color: var(--text-3);
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 2px 6px;
-      border-radius: 4px;
-      transition: color 0.2s;
-    }
-    .btn-clear-console:hover { color: var(--red); }
+        .project-image {
+            width: 100%;
+            height: 240px;
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.1) 0%, rgba(0, 212, 255, 0.1) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
 
-    .console-output {
-      padding: 14px 16px;
-      border-radius: var(--radius);
-      background: rgba(0,0,0,0.5);
-      border: 1px solid rgba(255,255,255,0.05);
-      font-family: 'Courier New', monospace;
-      font-size: 0.75rem;
-      color: var(--text-3);
-      min-height: 80px;
-      max-height: 160px;
-      overflow-y: auto;
-      line-height: 1.6;
-    }
-    .console-output .c-green { color: var(--green); }
-    .console-output .c-purple { color: var(--p3); }
-    .console-output .c-yellow { color: var(--yellow); }
-    .console-output .c-red { color: var(--red); }
-    .console-output .c-dim { color: var(--text-3); }
+        .project-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 30%, rgba(0, 255, 136, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
 
-    /* ─── Export Modal ───────────────────────────────────────────────── */
-    .modal-overlay {
-      position: fixed; inset: 0; z-index: 100;
-      background: rgba(0,0,0,0.6);
-      backdrop-filter: blur(6px);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.2s;
-    }
-    .modal-overlay.visible {
-      opacity: 1;
-      pointer-events: all;
-    }
-    .modal {
-      background: var(--bg-2);
-      border: 1px solid var(--border-bright);
-      border-radius: var(--radius-lg);
-      padding: 28px;
-      width: 360px;
-      max-width: calc(100vw - 40px);
-      box-shadow: 0 0 60px rgba(124,58,237,0.2);
-    }
-    .modal h2 {
-      font-size: 1.05rem;
-      margin-bottom: 6px;
-      background: linear-gradient(90deg, var(--p3), var(--accent));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    .modal p {
-      font-size: 0.78rem;
-      color: var(--text-3);
-      margin-bottom: 20px;
-    }
-    .export-options {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      margin-bottom: 20px;
-    }
-    .export-option {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 12px 14px;
-      border-radius: var(--radius);
-      border: 1px solid var(--border);
-      background: var(--glass);
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-    .export-option:hover {
-      border-color: var(--p2);
-      background: rgba(124,58,237,0.1);
-    }
-    .export-option-left { display: flex; align-items: center; gap: 10px; }
-    .export-icon { font-size: 1.2rem; }
-    .export-name { font-size: 0.85rem; font-weight: 600; }
-    .export-desc { font-size: 0.7rem; color: var(--text-3); }
-    .export-arrow { color: var(--p3); }
+        .project-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(0, 255, 136, 0.2);
+            color: #00ff88;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            border: 1px solid rgba(0, 255, 136, 0.4);
+            z-index: 2;
+        }
 
-    .modal-close {
-      width: 100%;
-      padding: 9px;
-      border-radius: var(--radius);
-      border: 1px solid var(--border);
-      background: var(--glass);
-      color: var(--text-2);
-      font-size: 0.8rem;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-    .modal-close:hover { border-color: var(--p2); color: var(--p3); }
+        .project-content {
+            padding: 2rem;
+            position: relative;
+            z-index: 2;
+        }
 
-    /* ─── Toast ──────────────────────────────────────────────────────── */
-    .toast {
-      position: fixed;
-      bottom: 24px; right: 24px;
-      padding: 12px 20px;
-      border-radius: var(--radius);
-      background: var(--bg-2);
-      border: 1px solid var(--border-bright);
-      color: var(--text-1);
-      font-size: 0.8rem;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
-      transform: translateY(80px);
-      opacity: 0;
-      transition: all 0.3s;
-      z-index: 200;
-    }
-    .toast.show {
-      transform: translateY(0);
-      opacity: 1;
-    }
+        .project-content h3 {
+            color: #fff;
+            margin-bottom: 0.8rem;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
 
-    /* ─── Scrollbar ──────────────────────────────────────────────────── */
-    ::-webkit-scrollbar { width: 5px; height: 5px; }
-    ::-webkit-scrollbar-track { background: transparent; }
-    ::-webkit-scrollbar-thumb { background: rgba(124,58,237,0.4); border-radius: 10px; }
+        .project-content p {
+            color: #a0a0a0;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 1.2rem;
+        }
 
-    /* ─── Loading overlay ───────────────────────────────────────────── */
-    .loading-bar {
-      position: fixed;
-      top: 0; left: 0;
-      height: 2px;
-      background: linear-gradient(90deg, var(--p1), var(--accent), var(--p1));
-      background-size: 200% 100%;
-      animation: shimmer 1.5s linear infinite;
-      z-index: 300;
-      transition: width 0.3s;
-    }
-    @keyframes shimmer {
-      0% { background-position: 200% 0; }
-      100% { background-position: -200% 0; }
-    }
+        .project-meta {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.2rem;
+            padding-top: 1.2rem;
+            border-top: 1px solid rgba(0, 255, 136, 0.1);
+        }
 
-    /* ─── Responsive ─────────────────────────────────────────────────── */
-    @media (max-width: 700px) {
-      .jobs-grid { grid-template-columns: 1fr; }
-      .stats-bar { grid-template-columns: repeat(2, 1fr); }
-      .command-hint { display: none; }
-    }
-  </style>
+        .project-tag {
+            font-size: 0.8rem;
+            color: #00ff88;
+            background: rgba(0, 255, 136, 0.1);
+            padding: 0.3rem 0.8rem;
+            border-radius: 4px;
+        }
+
+        .project-card {
+            cursor: pointer;
+        }
+
+        .project-link {
+            margin-left: auto;
+            color: #00ff88;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+        }
+
+        .project-link:hover {
+            color: #00d4ff;
+            transform: translateX(5px);
+        }
+
+        .service-card {
+            cursor: pointer;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(10, 14, 39, 0.95);
+            padding: 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(0, 255, 136, 0.1);
+            margin-top: 5rem;
+        }
+
+        .social-links {
+            margin: 1rem 0;
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .social-links a {
+            color: #00ff88;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #00d4ff;
+            transform: scale(1.2);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
 </head>
 <body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">🌀 WobblyWibbly Tech</div>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#analytics">Analytics</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
 
-<!-- Ambient orbs -->
-<div class="bg-orb bg-orb-1"></div>
-<div class="bg-orb bg-orb-2"></div>
-<div class="bg-orb bg-orb-3"></div>
-
-<!-- Loading bar -->
-<div class="loading-bar" id="loadingBar" style="width:0"></div>
-
-<div class="wrapper">
-
-  <!-- ── Header ── -->
-  <header>
-    <div class="logo-area">
-      <div class="logo-icon">🧠</div>
-      <div class="logo-text">
-        <h1>AI Jobs Intelligence</h1>
-        <p>LinkedIn · Naukri · Indeed · Foundit</p>
-      </div>
-    </div>
-    <div class="header-right">
-      <div class="live-badge">
-        <div class="live-dot"></div>
-        Live
-      </div>
-      <span class="last-updated" id="lastUpdated">—</span>
-    </div>
-  </header>
-
-  <!-- ── Stats Bar ── -->
-  <div class="stats-bar" id="statsBar">
-    <div class="stat-card glass">
-      <div class="stat-label">Jobs Found</div>
-      <div class="stat-value" id="statTotal">—</div>
-      <div class="stat-sub">Posted ≤ 2 days</div>
-    </div>
-    <div class="stat-card glass">
-      <div class="stat-label">Avg Salary</div>
-      <div class="stat-value" id="statAvgSalary">—</div>
-      <div class="stat-sub">Lakhs per annum</div>
-    </div>
-    <div class="stat-card glass">
-      <div class="stat-label">Avg Resume Match</div>
-      <div class="stat-value" id="statTopMatch">—</div>
-      <div class="stat-sub" id="statTopMatchSub">Across all positions</div>
-    </div>
-    <div class="stat-card glass">
-      <div class="stat-label">Platforms</div>
-      <div class="stat-value" id="statPlatforms">—</div>
-      <div class="stat-sub">Sources searched</div>
-    </div>
-  </div>
-
-  <!-- ── Command Bar ── -->
-  <div class="command-section">
-    <div class="command-label">AI Job Search Prompt</div>
-    <div class="command-wrap">
-      <span class="command-prompt-icon">⌘</span>
-      <input
-        type="text"
-        class="command-input"
-        id="commandInput"
-        placeholder="e.g. find AI architect jobs in Bangalore with salary > 60L, posted today..."
-        autocomplete="off"
-        spellcheck="false"
-      />
-      <span class="command-hint">⏎ Enter to search</span>
-      <button class="btn-run" onclick="runCommand()">Search</button>
-    </div>
-    <div class="suggestions">
-      <button class="chip" onclick="fillCmd('AI Solution Architect Bangalore hybrid > 40L posted today')">🔍 Today's Jobs</button>
-      <button class="chip" onclick="fillCmd('GenAI architect Bangalore salary > 60L')">💰 Salary > ₹60L</button>
-      <button class="chip" onclick="fillCmd('Principal AI architect Google Microsoft Amazon')">🏢 MAANG Companies</button>
-      <button class="chip" onclick="fillCmd('AI governance responsible AI Bangalore')">⚖️ Responsible AI</button>
-      <button class="chip" onclick="fillCmd('Head of AI director Bangalore > 80L')">🎯 Director Level</button>
-    </div>
-  </div>
-
-  <!-- ── Filters ── -->
-  <div class="filters-row">
-    <span class="filter-label">Filter:</span>
-    <button class="filter-btn active" data-filter="all" onclick="applyFilter(this,'all')">All Jobs</button>
-    <button class="filter-btn" data-filter="today" onclick="applyFilter(this,'today')">Posted Today</button>
-    <button class="filter-btn" data-filter="score90" onclick="applyFilter(this,'score90')">Match ≥ 90%</button>
-    <button class="filter-btn" data-filter="salary60" onclick="applyFilter(this,'salary60')">Salary ≥ ₹60L</button>
-    <button class="filter-btn" data-filter="linkedin" onclick="applyFilter(this,'linkedin')">LinkedIn</button>
-    <button class="filter-btn" data-filter="naukri" onclick="applyFilter(this,'naukri')">Naukri</button>
-    <div class="spacer"></div>
-    <select class="sort-select" id="sortSelect" onchange="applySort(this.value)">
-      <option value="score">Sort: Best Match</option>
-      <option value="salary">Sort: Highest Salary</option>
-      <option value="date">Sort: Newest First</option>
-    </select>
-    <button class="btn-refresh" id="btnRefresh" onclick="liveRefresh()">
-      <span class="spin">⟳</span> <span id="refreshLabel">Refresh Jobs</span>
-    </button>
-    <button class="btn-export" onclick="showExportModal()">
-      <span>⬇</span> Export
-    </button>
-  </div>
-
-  <!-- ── Jobs Grid ── -->
-  <div class="jobs-grid" id="jobsGrid">
-    <div class="empty-state">
-      <div class="emoji">⏳</div>
-      <p>Loading job listings...</p>
-    </div>
-  </div>
-
-  <!-- ── Console ── -->
-  <div class="console-section">
-    <div class="console-header">
-      <span class="console-title">▸ Activity Log</span>
-      <button class="btn-clear-console" onclick="clearConsole()">clear</button>
-    </div>
-    <div class="console-output" id="consoleOutput">
-      <span class="c-dim"># AI Jobs Intelligence Console — ready</span>
-    </div>
-  </div>
-
-</div><!-- /wrapper -->
-
-<!-- ── Export Modal ── -->
-<div class="modal-overlay" id="exportModal" onclick="hideExportModal(event)">
-  <div class="modal" onclick="event.stopPropagation()">
-    <h2>Export Job Listings</h2>
-    <p id="exportCount">Exporting all visible jobs</p>
-    <div class="export-options">
-      <div class="export-option" onclick="exportData('csv')">
-        <div class="export-option-left">
-          <span class="export-icon">📄</span>
-          <div>
-            <div class="export-name">CSV</div>
-            <div class="export-desc">Excel & Google Sheets compatible</div>
-          </div>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>AI & <span>Cricket Analytics</span> Redefined</h1>
+            <p>Transforming sports data into actionable insights with machine learning and real-time analytics</p>
+            <div class="cta-buttons">
+                <button class="btn btn-primary" onclick="document.getElementById('services').scrollIntoView({behavior: 'smooth'})">Explore Services</button>
+                <button class="btn btn-secondary" onclick="alert('Contact: santanu.sarker@gmail.com')">Get Started</button>
+            </div>
         </div>
-        <span class="export-arrow">→</span>
-      </div>
-      <div class="export-option" onclick="exportData('json')">
-        <div class="export-option-left">
-          <span class="export-icon">{ }</span>
-          <div>
-            <div class="export-name">JSON</div>
-            <div class="export-desc">Full data with all fields</div>
-          </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <h2 class="section-title">Our <span>Services</span></h2>
+        <div class="services-grid">
+            <div class="service-card" onclick="document.getElementById('projects').scrollIntoView({behavior: 'smooth'})">
+                <div class="service-icon">📊</div>
+                <h3>Business Analytics Dashboard</h3>
+                <p>Enterprise-grade analytics dashboards for real-time insights, KPI tracking, and data-driven decision making</p>
+            </div>
+            <div class="service-card" onclick="document.getElementById('projects').scrollIntoView({behavior: 'smooth'})">
+                <div class="service-icon">📈</div>
+                <h3>Data Visualization</h3>
+                <p>Interactive dashboards and real-time analytics platforms for sports data with heat maps and trend analysis</p>
+            </div>
+            <div class="service-card" onclick="document.getElementById('projects').scrollIntoView({behavior: 'smooth'})">
+                <div class="service-icon">🤖</div>
+                <h3>AI Solutions</h3>
+                <p>Machine learning models for prediction, classification, and pattern recognition in sports analytics</p>
+            </div>
+            <div class="service-card" onclick="document.getElementById('projects').scrollIntoView({behavior: 'smooth'})">
+                <div class="service-icon">📱</div>
+                <h3>Social Media</h3>
+                <p>Automated content generation and scheduling for Instagram, LinkedIn, and other platforms</p>
+            </div>
+            <div class="service-card" onclick="document.getElementById('projects').scrollIntoView({behavior: 'smooth'})">
+                <div class="service-icon">⚡</div>
+                <h3>Real-Time Processing</h3>
+                <p>Live data streaming and instant analytics for matches and events using cutting-edge tech</p>
+            </div>
+            <div class="service-card" onclick="document.getElementById('projects').scrollIntoView({behavior: 'smooth'})">
+                <div class="service-icon">💼</div>
+                <h3>Consulting</h3>
+                <p>Strategic insights and recommendations for sports teams and organizations leveraging AI</p>
+            </div>
         </div>
-        <span class="export-arrow">→</span>
-      </div>
-      <div class="export-option" onclick="exportData('txt')">
-        <div class="export-option-left">
-          <span class="export-icon">📋</span>
-          <div>
-            <div class="export-name">Plain Text</div>
-            <div class="export-desc">Simple list for copy-paste</div>
-          </div>
+    </section>
+
+    <!-- Analytics Dashboard -->
+    <section class="dashboard" id="analytics">
+        <h2>Live <span style="color: #00ff88;">Analytics Dashboard</span></h2>
+        <div class="stats-grid">
+            <div class="stat-box">
+                <div class="stat-number">14</div>
+                <div class="stat-label">Wickets (T20 WC)</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">3.75</div>
+                <div class="stat-label">Best Economy</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">94%</div>
+                <div class="stat-label">Prediction Accuracy</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">42%</div>
+                <div class="stat-label">Yorker Percentage</div>
+            </div>
         </div>
-        <span class="export-arrow">→</span>
-      </div>
-    </div>
-    <button class="modal-close" onclick="hideExportModal()">Cancel</button>
-  </div>
-</div>
 
-<!-- ── Toast ── -->
-<div class="toast" id="toast"></div>
-
-<script>
-// ─── State ────────────────────────────────────────────────────────────────
-let allJobs = [];
-let filteredJobs = [];
-let currentFilter = 'all';
-let currentSort = 'score';
-
-const COMPANY_COLORS = {
-  'Infosys Limited':     { bg: '#1e3a5f', text: '#60a5fa', emoji: 'I' },
-  'Wipro Technologies':  { bg: '#1a3a1a', text: '#4ade80', emoji: 'W' },
-  'Accenture India':     { bg: '#3b1f5e', text: '#c084fc', emoji: 'A' },
-  'Capgemini India':     { bg: '#1e3a3a', text: '#67e8f9', emoji: 'C' },
-  'Google India':        { bg: '#3b2a00', text: '#fbbf24', emoji: 'G' },
-  'Microsoft India':     { bg: '#1a2a4a', text: '#93c5fd', emoji: 'M' },
-  'Deloitte India':      { bg: '#3b1a1a', text: '#f87171', emoji: 'D' },
-  'Flipkart Internet Pvt Ltd': { bg: '#1f1a3b', text: '#a5b4fc', emoji: 'F' },
-};
-
-// ─── Init ─────────────────────────────────────────────────────────────────
-async function init() {
-  showLoadingBar(true);
-  log('Initializing AI Jobs Intelligence dashboard...', 'green');
-  try {
-    const res = await fetch('jobs.json?t=' + Date.now());
-    if (!res.ok) throw new Error('HTTP ' + res.status);
-    const data = await res.json();
-    allJobs = data.jobs || [];
-
-    // Populate stats
-    document.getElementById('statTotal').textContent = data.total_found || allJobs.length;
-    const avgSal = Math.round(allJobs.reduce((a,j) => a + ((j.salary_min_lpa + j.salary_max_lpa) / 2), 0) / allJobs.length);
-    document.getElementById('statAvgSalary').textContent = '₹' + avgSal + 'L';
-    const topScore = Math.max(...allJobs.map(j => j.jd_match_score));
-    const avgMatch = Math.round(allJobs.reduce((a,j) => a + j.jd_match_score, 0) / allJobs.length);
-    document.getElementById('statTopMatch').textContent = avgMatch + '%';
-    document.getElementById('statTopMatchSub').textContent = 'Avg across all jobs (top: ' + topScore + '%)';
-    const platforms = [...new Set(allJobs.map(j => j.platform))].length;
-    document.getElementById('statPlatforms').textContent = platforms;
-
-    // Last updated
-    if (data.last_updated) {
-      const d = new Date(data.last_updated);
-      document.getElementById('lastUpdated').textContent = 'Updated: ' + d.toLocaleDateString('en-IN', {day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'});
-    }
-
-    // Resume mode banner
-    if (data.scoring_basis === 'resume' && data.resume_profile) {
-      const rp = data.resume_profile;
-      const banner = document.createElement('div');
-      banner.className = 'resume-mode-banner';
-      banner.innerHTML = `
-        <span>🎯</span>
-        <div>
-          <strong>Resume Match Mode — ${rp.name}</strong><br>
-          <span style="color:var(--text-3);font-size:0.72rem">Scores recalculated based on your resume keywords vs each job's requirements</span>
+        <div class="chart-container">
+            <div class="chart-title">Bowling Performance Metrics</div>
+            <div class="bar">
+                <div class="bar-label">Yorkers</div>
+                <div class="bar-container">
+                    <div class="bar-fill" style="width: 0%; animation: fillWidth 2s ease-out forwards;" data-width="42%"></div>
+                </div>
+                <div class="bar-value">42%</div>
+            </div>
+            <div class="bar">
+                <div class="bar-label">Good Length</div>
+                <div class="bar-container">
+                    <div class="bar-fill" style="width: 0%; animation: fillWidth 2s ease-out forwards 0.2s;" data-width="29%"></div>
+                </div>
+                <div class="bar-value">29%</div>
+            </div>
+            <div class="bar">
+                <div class="bar-label">Short Balls</div>
+                <div class="bar-container">
+                    <div class="bar-fill" style="width: 0%; animation: fillWidth 2s ease-out forwards 0.4s;" data-width="21%"></div>
+                </div>
+                <div class="bar-value">21%</div>
+            </div>
+            <div class="bar">
+                <div class="bar-label">Full Pitches</div>
+                <div class="bar-container">
+                    <div class="bar-fill" style="width: 0%; animation: fillWidth 2s ease-out forwards 0.6s;" data-width="8%"></div>
+                </div>
+                <div class="bar-value">8%</div>
+            </div>
         </div>
-        <div class="overall-score">Your JD Fit: ${rp.overall_resume_jd_match}% overall</div>
-      `;
-      document.querySelector('.filters-row').insertAdjacentElement('beforebegin', banner);
-    }
+    </section>
 
-    applyFilterAndSort();
-    log(`Loaded ${allJobs.length} job listings from ${platforms} platforms`, 'green');
-    log(`Criteria: Bangalore | Hybrid | ≥15 yrs | ≤2 days old | ≥₹40L`, 'purple');
-  } catch(e) {
-    log('Error loading jobs: ' + e.message, 'red');
-    document.getElementById('jobsGrid').innerHTML = `
-      <div class="empty-state">
-        <div class="emoji">⚠️</div>
-        <p>Could not load job data. Run <code>/linkedin-market-research</code> in Claude Code to fetch fresh results.</p>
-      </div>`;
-  }
-  showLoadingBar(false);
-}
-
-// ─── Filter & Sort ────────────────────────────────────────────────────────
-function applyFilter(btn, filter) {
-  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  currentFilter = filter;
-  applyFilterAndSort();
-}
-
-function applySort(value) {
-  currentSort = value;
-  applyFilterAndSort();
-}
-
-function applyFilterAndSort() {
-  filteredJobs = allJobs.filter(j => {
-    if (currentFilter === 'today')   return j.posted_label === 'Today';
-    if (currentFilter === 'score90') return j.jd_match_score >= 90;
-    if (currentFilter === 'salary60') return j.salary_min_lpa >= 60;
-    if (currentFilter === 'linkedin') return j.platform.toLowerCase() === 'linkedin';
-    if (currentFilter === 'naukri')  return j.platform.toLowerCase() === 'naukri';
-    return true;
-  });
-
-  filteredJobs.sort((a, b) => {
-    if (currentSort === 'score')  return b.jd_match_score - a.jd_match_score;
-    if (currentSort === 'salary') return b.salary_max_lpa - a.salary_max_lpa;
-    if (currentSort === 'date')   return (b.posted_label === 'Today' ? 1 : 0) - (a.posted_label === 'Today' ? 1 : 0);
-    return 0;
-  });
-
-  renderJobs(filteredJobs);
-  log(`Showing ${filteredJobs.length} of ${allJobs.length} jobs — filter: ${currentFilter}, sort: ${currentSort}`, 'dim');
-}
-
-// ─── Render Cards ─────────────────────────────────────────────────────────
-function renderJobs(jobs) {
-  const grid = document.getElementById('jobsGrid');
-  if (!jobs.length) {
-    grid.innerHTML = `<div class="empty-state"><div class="emoji">🔍</div><p>No jobs match the current filters. Try adjusting your criteria.</p></div>`;
-    return;
-  }
-
-  grid.innerHTML = jobs.map(j => {
-    const scoreClass = j.jd_match_score >= 90 ? 'score-high' : j.jd_match_score >= 80 ? 'score-mid' : 'score-low';
-    const c = COMPANY_COLORS[j.company] || { bg: '#1a1a2e', text: '#c084fc', emoji: j.company[0] };
-    const maxSkills = 5;
-    const visibleSkills = j.key_skills.slice(0, maxSkills);
-    const extraCount = j.key_skills.length - maxSkills;
-
-    return `
-    <div class="job-card glass" role="article">
-      <div class="score-ribbon ${scoreClass}">
-        ${j.jd_match_score}% Match
-      </div>
-
-      <div class="card-header">
-        <div class="company-logo" style="background:${c.bg};color:${c.text}">${c.emoji}</div>
-        <div class="card-title-area">
-          <h3>${escHtml(j.title)}</h3>
-          <div class="card-company">${escHtml(j.company)}</div>
+    <!-- Projects Section -->
+    <section class="projects" id="projects">
+        <h2 class="section-title">Explore <span>Projects</span></h2>
+        <div class="projects-grid">
+            <div class="project-card" onclick="showProjectDetails('t20-analytics')">
+                <div class="project-image">
+                    📊
+                    <div class="project-badge">FEATURED</div>
+                </div>
+                <div class="project-content">
+                    <h3>T20 World Cup Analytics</h3>
+                    <p>Comprehensive analysis of Jasprit Bumrah's bowling performance, ball-by-ball metrics, and predictive insights from the 2026 T20 World Cup semi-final and final</p>
+                    <div class="project-meta">
+                        <span class="project-tag">Cricket</span>
+                        <span class="project-tag">Analytics</span>
+                        <span class="project-tag">AI</span>
+                        <span class="project-link">Explore →</span>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card" onclick="showProjectDetails('ai-engine')">
+                <div class="project-image">
+                    🤖
+                    <div class="project-badge">AI/ML</div>
+                </div>
+                <div class="project-content">
+                    <h3>AI Prediction Engine</h3>
+                    <p>Machine learning models predicting match outcomes with 94% accuracy using real-time cricket data and advanced statistical modeling</p>
+                    <div class="project-meta">
+                        <span class="project-tag">ML</span>
+                        <span class="project-tag">Prediction</span>
+                        <span class="project-tag">Sports</span>
+                        <span class="project-link">Explore →</span>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card" onclick="showProjectDetails('live-dashboard')">
+                <div class="project-image">
+                    📈
+                    <div class="project-badge">LIVE</div>
+                </div>
+                <div class="project-content">
+                    <h3>Live Performance Dashboard</h3>
+                    <p>Real-time analytics platform for cricket matches with instant insights, heat maps, performance metrics, and trend analysis</p>
+                    <div class="project-meta">
+                        <span class="project-tag">Dashboard</span>
+                        <span class="project-tag">Real-time</span>
+                        <span class="project-tag">Data Viz</span>
+                        <span class="project-link">Explore →</span>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card" onclick="showProjectDetails('content-engine')">
+                <div class="project-image">
+                    📱
+                    <div class="project-badge">SOCIAL</div>
+                </div>
+                <div class="project-content">
+                    <h3>Automated Content Engine</h3>
+                    <p>Intelligent content generation and scheduling system for Instagram, LinkedIn, and social platforms with AI-powered captions</p>
+                    <div class="project-meta">
+                        <span class="project-tag">Social</span>
+                        <span class="project-tag">Automation</span>
+                        <span class="project-tag">AI</span>
+                        <span class="project-link">Explore →</span>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card" onclick="showProjectDetails('stock-bot')">
+                <div class="project-image">
+                    ⚡
+                    <div class="project-badge">ACTIVE</div>
+                </div>
+                <div class="project-content">
+                    <h3>Stock Market Analysis Bot</h3>
+                    <p>Real-time stock market analysis with Telegram integration providing daily briefings and predictive alerts for Indian markets</p>
+                    <div class="project-meta">
+                        <span class="project-tag">Finance</span>
+                        <span class="project-tag">Bot</span>
+                        <span class="project-tag">Alerts</span>
+                        <span class="project-link">Explore →</span>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card" onclick="showProjectDetails('job-dashboard')">
+                <div class="project-image">
+                    💼
+                    <div class="project-badge">TOOLS</div>
+                </div>
+                <div class="project-content">
+                    <h3>Job Intelligence Dashboard</h3>
+                    <p>AI-powered job search and recommendations for AI Architects with resume scoring, skill matching, and personalized opportunities</p>
+                    <div class="project-meta">
+                        <span class="project-tag">Jobs</span>
+                        <span class="project-tag">AI</span>
+                        <span class="project-tag">Matching</span>
+                        <span class="project-link">Explore →</span>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
+    </section>
 
-      <div class="card-meta">
-        <span class="meta-tag salary">💰 ${escHtml(j.salary_display)}</span>
-        <span class="meta-tag date">🕐 ${escHtml(j.posted_label)}</span>
-        <span class="meta-tag hybrid">🏠 ${escHtml(j.work_mode)}</span>
-        <span class="meta-tag">📍 ${escHtml(j.location.split(',')[0])}</span>
-        <span class="meta-tag platform">${escHtml(j.platform)}</span>
-        <span class="meta-tag">👤 ${escHtml(j.experience_required)}</span>
-      </div>
-
-      <div class="skills-row">
-        ${visibleSkills.map(s => `<span class="skill-tag">${escHtml(s)}</span>`).join('')}
-        ${extraCount > 0 ? `<span class="skill-tag overflow">+${extraCount} more</span>` : ''}
-      </div>
-
-      <p class="card-desc">${escHtml(j.description_snippet)}</p>
-
-      ${(j.resume_gaps || j.resume_strengths) ? `
-      <div class="gaps-section">
-        ${j.resume_strengths && j.resume_strengths.length ? `
-        <div class="gaps-row">
-          <span class="gaps-label strength">✓ Matched</span>
-          ${j.resume_strengths.slice(0,4).map(s => `<span class="gap-tag present">${escHtml(s)}</span>`).join('')}
-        </div>` : ''}
-        ${j.resume_gaps && j.resume_gaps.length ? `
-        <div class="gaps-row">
-          <span class="gaps-label gap">✗ Gaps</span>
-          ${j.resume_gaps.map(g => `<span class="gap-tag missing">${escHtml(g)}</span>`).join('')}
-        </div>` : ''}
-      </div>` : ''}
-
-      <div class="card-footer">
-        <div class="match-bar-wrap">
-          <span class="match-bar-label">Resume Match</span>
-          <div class="match-bar-track">
-            <div class="match-bar-fill" style="width:${j.jd_match_score}%"></div>
-          </div>
-          <span class="match-pct">${j.jd_match_score}%</span>
-          ${j.original_jd_match_score ? `<span class="delta-badge">was <span>${j.original_jd_match_score}%</span></span>` : ''}
+    <!-- Footer -->
+    <footer id="contact">
+        <h3>Get In Touch</h3>
+        <p style="color: #b0b0b0; margin: 1rem 0;">Email: santanu.sarker@gmail.com | Phone: +91 9620393657</p>
+        <div class="social-links">
+            <a href="https://linkedin.com/in/santanu-sarker" target="_blank">LinkedIn</a>
+            <a href="https://instagram.com/wibblewobbletech" target="_blank">Instagram</a>
+            <a href="https://twitter.com/wibblewobbletech" target="_blank">Twitter</a>
         </div>
-        <a href="${j.apply_url}" target="_blank" rel="noopener noreferrer" class="btn-apply">Apply →</a>
-      </div>
-    </div>`;
-  }).join('');
-}
+        <p style="margin-top: 2rem; color: #666; font-size: 0.9rem;">© 2026 WobblyWibbly Tech. All rights reserved.</p>
+    </footer>
 
-// ─── Command Input ────────────────────────────────────────────────────────
-function fillCmd(text) {
-  const input = document.getElementById('commandInput');
-  input.value = text;
-  input.focus();
-}
+    <script>
+        // Project details data
+        const projectDetails = {
+            't20-analytics': {
+                title: 'T20 World Cup Analytics',
+                description: 'Comprehensive analysis of Jasprit Bumrah\'s bowling performance at the 2026 T20 World Cup',
+                details: 'This project showcases real-time cricket analytics with detailed ball-by-ball metrics, performance predictions, and comparative analysis of the semi-final vs England and final vs New Zealand matches.'
+            },
+            'ai-engine': {
+                title: 'AI Prediction Engine',
+                description: 'Machine learning for cricket match outcome prediction',
+                details: 'Advanced ML models achieving 94% accuracy in predicting match outcomes using statistical modeling, player performance data, and real-time match conditions.'
+            },
+            'live-dashboard': {
+                title: 'Live Performance Dashboard',
+                description: 'Real-time analytics platform for cricket matches',
+                details: 'Interactive dashboard providing instant insights, heat maps, performance metrics, and trend analysis for ongoing cricket matches with live data updates.'
+            },
+            'content-engine': {
+                title: 'Automated Content Engine',
+                description: 'AI-powered content generation and scheduling',
+                details: 'Intelligent system that generates customized content for Instagram, LinkedIn, and other social platforms with automated scheduling and real-time posting capabilities.'
+            },
+            'stock-bot': {
+                title: 'Stock Market Analysis Bot',
+                description: 'Real-time stock market analysis with Telegram integration',
+                details: 'Telegram bot providing daily market briefings, top stock picks with RSI analysis, sector insights, and personalized portfolio recommendations for Indian markets.'
+            },
+            'job-dashboard': {
+                title: 'Job Intelligence Dashboard',
+                description: 'AI-powered job search and recommendations',
+                details: 'Intelligent job matching system that scores opportunities against resume strengths, identifies skill gaps, and provides personalized job recommendations for AI Architects.'
+            }
+        };
 
-function runCommand() {
-  const val = document.getElementById('commandInput').value.trim();
-  if (!val) return;
-  log(`⌘ Running: "${val}"`, 'purple');
-  log('→ To fetch live results, run /linkedin-market-research in Claude Code with your prompt.', 'yellow');
-  log('→ Dashboard will auto-refresh when jobs.json is updated.', 'dim');
+        function showProjectDetails(projectId) {
+            const project = projectDetails[projectId];
+            if (project) {
+                alert(`${project.title}\n\n${project.description}\n\n${project.details}\n\nVisit the project portfolio for more details!`);
+            }
+        }
 
-  // Client-side text search over loaded data
-  const terms = val.toLowerCase().split(/\s+/).filter(t => t.length > 2);
-  if (terms.length) {
-    filteredJobs = allJobs.filter(j => {
-      const haystack = [j.title, j.company, j.description_snippet, ...j.key_skills].join(' ').toLowerCase();
-      return terms.some(t => haystack.includes(t));
-    });
-    if (filteredJobs.length) {
-      renderJobs(filteredJobs);
-      log(`Found ${filteredJobs.length} matching jobs for local search`, 'green');
-    } else {
-      log('No local matches — try running a fresh search via Claude Code.', 'yellow');
-    }
-  }
-}
+        // Animate bars on load
+        window.addEventListener('load', () => {
+            const bars = document.querySelectorAll('.bar-fill');
+            bars.forEach((bar, index) => {
+                const width = bar.getAttribute('data-width');
+                setTimeout(() => {
+                    bar.style.width = width;
+                }, index * 200);
+            });
+        });
 
-document.getElementById('commandInput').addEventListener('keydown', e => {
-  if (e.key === 'Enter') runCommand();
-});
+        // Add scroll animation to service cards and project cards
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'slideIn 0.6s ease-out';
+                }
+            });
+        });
 
-// ─── Export ───────────────────────────────────────────────────────────────
-function showExportModal() {
-  document.getElementById('exportCount').textContent =
-    `Exporting ${filteredJobs.length} job${filteredJobs.length !== 1 ? 's' : ''} (current view)`;
-  document.getElementById('exportModal').classList.add('visible');
-}
-function hideExportModal(e) {
-  if (!e || e.target === document.getElementById('exportModal')) {
-    document.getElementById('exportModal').classList.remove('visible');
-  }
-}
+        document.querySelectorAll('.service-card, .project-card').forEach(card => {
+            observer.observe(card);
+        });
 
-function exportData(format) {
-  hideExportModal();
-  const jobs = filteredJobs.length ? filteredJobs : allJobs;
-  const ts = new Date().toISOString().slice(0,10);
+        // Add hover cursor style
+        document.querySelectorAll('.service-card, .project-card').forEach(card => {
+            card.style.cursor = 'pointer';
+        });
+    </script>
 
-  if (format === 'json') {
-    const blob = new Blob([JSON.stringify({exported_at: new Date().toISOString(), jobs}, null, 2)], {type:'application/json'});
-    download(blob, `ai-jobs-${ts}.json`);
-  } else if (format === 'csv') {
-    const headers = ['Title','Company','Location','Work Mode','Posted','Salary','Experience','JD Match %','Platform','Skills','Apply URL'];
-    const rows = jobs.map(j => [
-      j.title, j.company, j.location, j.work_mode, j.posted_label,
-      j.salary_display, j.experience_required, j.jd_match_score + '%',
-      j.platform, j.key_skills.join('; '), j.apply_url
-    ].map(v => `"${String(v).replace(/"/g,'""')}"`).join(','));
-    const csv = [headers.join(','), ...rows].join('\n');
-    download(new Blob([csv], {type:'text/csv'}), `ai-jobs-${ts}.csv`);
-  } else {
-    const lines = jobs.map((j,i) =>
-      `${i+1}. ${j.title} @ ${j.company}\n   ${j.salary_display} | ${j.posted_label} | ${j.work_mode}\n   Skills: ${j.key_skills.join(', ')}\n   Apply: ${j.apply_url}\n`
-    );
-    download(new Blob([lines.join('\n')], {type:'text/plain'}), `ai-jobs-${ts}.txt`);
-  }
-  showToast(`✓ Exported ${jobs.length} jobs as ${format.toUpperCase()}`);
-  log(`Exported ${jobs.length} jobs as ${format.toUpperCase()} → ai-jobs-${ts}.${format}`, 'green');
-}
+    <style>
+        @keyframes fillWidth {
+            to {
+                width: var(--width);
+            }
+        }
 
-function download(blob, filename) {
-  const a = document.createElement('a');
-  a.href = URL.createObjectURL(blob);
-  a.download = filename;
-  a.click();
-  URL.revokeObjectURL(a.href);
-}
-
-// ─── Console ──────────────────────────────────────────────────────────────
-function log(msg, type = 'dim') {
-  const out = document.getElementById('consoleOutput');
-  const ts = new Date().toLocaleTimeString('en-IN', {hour:'2-digit',minute:'2-digit',second:'2-digit'});
-  const line = document.createElement('div');
-  line.innerHTML = `<span class="c-dim">[${ts}]</span> <span class="c-${type}">${escHtml(msg)}</span>`;
-  out.appendChild(line);
-  out.scrollTop = out.scrollHeight;
-}
-function clearConsole() {
-  document.getElementById('consoleOutput').innerHTML = '<span class="c-dim"># console cleared</span>';
-}
-
-// ─── Toast ────────────────────────────────────────────────────────────────
-function showToast(msg, duration = 3000) {
-  const t = document.getElementById('toast');
-  t.textContent = msg;
-  t.classList.add('show');
-  setTimeout(() => t.classList.remove('show'), duration);
-}
-
-// ─── Loading Bar ──────────────────────────────────────────────────────────
-function showLoadingBar(show) {
-  const bar = document.getElementById('loadingBar');
-  bar.style.width = show ? '70%' : '100%';
-  if (!show) setTimeout(() => { bar.style.width = '0'; bar.style.transition = 'none'; }, 400);
-  else bar.style.transition = 'width 0.5s ease';
-}
-
-// ─── Utils ────────────────────────────────────────────────────────────────
-function escHtml(s) {
-  return String(s)
-    .replace(/&/g,'&amp;')
-    .replace(/</g,'&lt;')
-    .replace(/>/g,'&gt;')
-    .replace(/"/g,'&quot;');
-}
-
-// ─── Live Refresh (calls backend /api/refresh) ────────────────────────────
-async function liveRefresh() {
-  const btn   = document.getElementById('btnRefresh');
-  const label = document.getElementById('refreshLabel');
-
-  btn.disabled = true;
-  btn.classList.add('loading');
-  label.textContent = 'Searching...';
-  log('🔄 Contacting backend — searching live AI Architect jobs on Naukri, LinkedIn, iimjobs...', 'purple');
-
-  try {
-    const res  = await fetch('/api/refresh', { method: 'POST' });
-    const data = await res.json();
-
-    if (data.success && data.jobs_found > 0) {
-      log(`✓ ${data.message}`, 'green');
-      showToast(`✓ Found ${data.jobs_found} fresh job(s) — dashboard updated!`);
-      await init();   // reload jobs.json and re-render
-    } else {
-      log(`ℹ ${data.message}`, 'yellow');
-      showToast('ℹ No new jobs found. Existing listings kept.');
-    }
-  } catch (err) {
-    log('✗ Could not reach refresh API. Make sure server.py is running (not python -m http.server).', 'red');
-    showToast('⚠ Refresh failed — is server.py running?');
-  } finally {
-    btn.disabled = false;
-    btn.classList.remove('loading');
-    label.textContent = 'Refresh Jobs';
-  }
-}
-
-// ─── Auto-refresh every 5 min ─────────────────────────────────────────────
-setInterval(() => {
-  log('Auto-refreshing job data...', 'dim');
-  init();
-}, 5 * 60 * 1000);
-
-// Start
-init();
-</script>
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
 </body>
 </html>
