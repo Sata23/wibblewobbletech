@@ -4,7 +4,7 @@ const profileData = {
     headline: "AI Based Product Solution Design Advisor & Developer",
     bio: "I architect cost-effective, low-code, and ethical AI product implementations. Leveraging Claude, Mistral, Huggingface, Crew AI, Gemini, and Mastra, I design advanced AI solutions. Using Figma, Python, JavaScript, HTML/CSS, and JSON, I deliver performant, visually stunning applications that seamlessly integrate AI into complex real-world workflows.",
     contactEmail: "shantanuscreation@gmail.com",
-    calendarLink: "#", // Update this with your Google Calendar Appointment API / Scheduling link
+    calendarLink: "https://calendar.google.com/calendar/u/0/r/eventedit?add=shantanuscreation@gmail.com", // Direct Google Calendar scheduling link
     linkedinUrl: "https://www.linkedin.com/in/santanusarker/",
     servicesUrl: "https://www.linkedin.com/in/santanusarker/details/services/",
     stats: {
@@ -110,16 +110,23 @@ document.addEventListener('DOMContentLoaded', () => {
     
     elementsToUpdate.forEach(el => {
         const key = el.getAttribute('data-profile');
-        if (profileData[key]) {
+        let value = profileData[key];
+        
+        // Check in stats if not found at top level
+        if (value === undefined && profileData.stats && profileData.stats[key]) {
+            value = profileData.stats[key];
+        }
+
+        if (value !== undefined) {
             if (el.tagName === 'A' && key.includes('Url')) {
-                el.href = profileData[key];
+                el.href = value;
             } else if (el.tagName === 'A' && key === 'contactEmail') {
-                el.href = `mailto:${profileData[key]}`;
-                el.innerHTML = `<span class="material-symbols-outlined">mail</span> ${profileData[key]}`;
+                el.href = `mailto:${value}`;
+                el.innerHTML = `<span class="material-symbols-outlined">mail</span> ${value}`;
             } else if (el.tagName === 'A' && key === 'calendarLink') {
-                el.href = profileData[key];
+                el.href = value;
             } else {
-                el.textContent = profileData[key];
+                el.textContent = value;
             }
         }
     });
